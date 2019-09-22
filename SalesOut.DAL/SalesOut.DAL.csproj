@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5CB756FF-23FE-4083-8110-08192E3FF15E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>SalesOut.ConsoleUI</RootNamespace>
-    <AssemblyName>SalesOut.ConsoleUI</AssemblyName>
+    <ProjectGuid>{5B801DAC-2848-46C4-ADAA-0740585CEB1D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SalesOut.DAL</RootNamespace>
+    <AssemblyName>SalesOut.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,17 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Core\DbManager.cs" />
+    <Compile Include="Models\Entities\Abstractions\IBaseEntity.cs" />
+    <Compile Include="Models\Entities\Implementations\Role.cs" />
+    <Compile Include="Repositories\Abstractions\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BasicRepository.cs" />
+    <Compile Include="Repositories\Implementations\RolesRepository.cs" />
+    <Compile Include="Models\Entities\Implementations\User.cs" />
+    <Compile Include="Repositories\Implementations\UsersRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SalesOut.DAL\SalesOut.DAL.csproj">
-      <Project>{5b801dac-2848-46c4-adaa-0740585ceb1d}</Project>
-      <Name>SalesOut.DAL</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
