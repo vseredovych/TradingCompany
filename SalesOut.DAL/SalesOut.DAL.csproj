@@ -45,7 +45,12 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Core\DbManager.cs" />
     <Compile Include="Models\Entities\Abstractions\IBaseEntity.cs" />
+    <Compile Include="Models\Entities\Implementations\Order.cs" />
+    <Compile Include="Models\Entities\Implementations\OrderToProduct.cs" />
+    <Compile Include="Models\Entities\Implementations\Product.cs" />
     <Compile Include="Models\Entities\Implementations\Role.cs" />
+    <Compile Include="Models\Entities\Implementations\Supplier.cs" />
+    <Compile Include="Models\Entities\Implementations\SupplierToProduct.cs" />
     <Compile Include="Repositories\Abstractions\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BasicRepository.cs" />

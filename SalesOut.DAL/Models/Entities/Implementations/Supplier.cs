@@ -1,8 +1,12 @@
-﻿using TransIT.DAL.Models.Entities.Abstractions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SalesOut.DAL.Models.Entities.Implementations
 {
-    public class Role : IBaseEntity
+    class Supplier
     {
         public ulong Id { get; set; }
         public string Name { get; set; }

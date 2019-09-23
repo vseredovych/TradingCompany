@@ -16,12 +16,20 @@ namespace SalesOut.DAL.Repositories.Implementations
         //CRUD
         public User Create(User user)
         {
-            string commandText = string.Format("Insert into {0} (FirstName, LastName, Email, HashPassword, Role) " +
+            string commandText = string.Format("Insert into {0} (FirstName, LastName, Email, HashPassword, RoleId) " +
                                                "output inserted.Id " +
-                                               "values (@FirstName, @LastName, @Email, @HashPassword, @Role);", _databaseTable);
+                                               "values (@FirstName, @LastName, @Email, @HashPassword, @RoleId);", _databaseTable);
             var parameters = GetParametrs(user);
-            user.Id =  Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
-       
+
+            try
+            {
+                user.Id = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
             return user;
         }
         public User Update(User user)
@@ -32,12 +40,19 @@ namespace SalesOut.DAL.Repositories.Implementations
                 "LastName = @LastName, " +
                 "Email = @Email, " +
                 "HashPassword = @HashPassword, " +
-                "Role = @Role " +
+                "RoleId = @RoleId " +
                 "output inserted.Id " +
                 "Where Id = @Id;", _databaseTable);
 
             var parameters = GetParametrs(user);
-            user.Id = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
+            try
+            {
+                user.Id = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
             return user;
         }
@@ -47,13 +62,21 @@ namespace SalesOut.DAL.Repositories.Implementations
                                                 "output deleted.Id " +
                                                 "where Id = @Id", _databaseTable);
             var parameters = GetParametrs(user);
-            ulong deletedId = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
 
-            if (user.Id == deletedId)
+            try
             {
-                return true;
+                ulong deletedId = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
+
+                if (user.Id == deletedId)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public bool Delete(ulong id)
@@ -64,13 +87,20 @@ namespace SalesOut.DAL.Repositories.Implementations
 
             List<DbParameter> parameters = new List<DbParameter>();
             parameters.Add(dbManager.CreateParameter("@Id", id, DbType.Int64));
-            ulong deletedId = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
-
-            if (id == deletedId)
+            try
             {
-                return true;
+                ulong deletedId = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
+
+                if (id == deletedId)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public IEnumerable<User> GetAll()
@@ -79,11 +109,8 @@ namespace SalesOut.DAL.Repositories.Implementations
             List<User> users = new List<User>();
             User user = new User();
 
-            using (var connection = dbManager.CreateConnection())
+            using (var reader = dbManager.GetDataReader(commandText))
             {
-                connection.Open();
-                var command = dbManager.CreateDbCommand(connection, commandText);
-                DbDataReader reader = dbManager.GetDataReader(commandText);
 
                 if (reader.IsClosed)
                 {
@@ -109,12 +136,8 @@ namespace SalesOut.DAL.Repositories.Implementations
             parameters.Add(dbManager.CreateParameter("@Start", start, DbType.Int64));
             parameters.Add(dbManager.CreateParameter("@End", end, DbType.Int64));
 
-
-            using (var connection = dbManager.CreateConnection())
-            {
-                connection.Open();
-                var command = dbManager.CreateDbCommand(connection, commandText);
-                DbDataReader reader = dbManager.GetDataReader(commandText, parameters);
+            using (var reader = dbManager.GetDataReader(commandText, parameters))
+            { 
 
                 if (reader.IsClosed)
                 {
@@ -135,60 +158,71 @@ namespace SalesOut.DAL.Repositories.Implementations
             List<IDbDataParameter> parameters = new List<IDbDataParameter>();
 
             parameters.Add(dbManager.CreateParameter("@Id", id, DbType.Int64));
-            var reader = dbManager.GetDataReader(commandText, parameters);
-
-            User user = new User();
-            if (reader.IsClosed)
+            using (var reader = dbManager.GetDataReader(commandText, parameters))
             {
-                return user;
-            }
+                User user = new User();
+                if (reader.IsClosed)
+                {
+                    return user;
+                }
 
-            try
-            {
                 reader.Read();
                 user = FillEntity(reader);
 
                 return user;
             }
-            catch (Exception ex)
-            {
-                throw new NotImplementedException(ex.Message);
-            }
-            finally
-            {
-                reader.Close();
-            }
         }
         public ulong GetScalarValue(string commandText)
         {
             List<DbParameter> parameters = new List<DbParameter>();
-            object scalarValue = dbManager.GetScalarValue(commandText, parameters);
-            return Convert.ToUInt64(scalarValue);
+            try
+            {
+                object scalarValue = dbManager.GetScalarValue(commandText, parameters);
+                return Convert.ToUInt64(scalarValue);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public User FillEntity(DbDataReader reader)
+        private User FillEntity(DbDataReader reader)
         {
-            User user = new User();
-            user.Id = Convert.ToUInt64(reader["Id"]);
-            user.FirstName = reader["FirstName"].ToString();
-            user.LastName = reader["LastName"].ToString();
-            user.Email = reader["Email"].ToString();
-            user.HashPassword = reader["HashPassword"].ToString();
-            user.Role = reader["Role"].ToString();
+            try
+            {
+                User user = new User();
+                user.Id = Convert.ToUInt64(reader["Id"]);
+                user.FirstName = reader["FirstName"].ToString();
+                user.LastName = reader["LastName"].ToString();
+                user.Email = reader["Email"].ToString();
+                user.HashPassword = reader["HashPassword"].ToString();
+                user.RoleId = reader["RoleId"].ToString();
 
-            return user;
+                return user;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public List<DbParameter> GetParametrs(User user)
+        private List<DbParameter> GetParametrs(User user)
         {
-            List<DbParameter> parameters = new List<DbParameter>();
-            parameters.Add(dbManager.CreateParameter("@Id", user.Id, DbType.Int64));
-            parameters.Add(dbManager.CreateParameter("@FirstName", 50, user.FirstName, DbType.String));
-            parameters.Add(dbManager.CreateParameter("@LastName", 50, user.LastName, DbType.String));
-            parameters.Add(dbManager.CreateParameter("@Email", 50, user.Email, DbType.String));
-            parameters.Add(dbManager.CreateParameter("@HashPassword", 50, user.HashPassword, DbType.String));
-            parameters.Add(dbManager.CreateParameter("@Role", 50, user.Role, DbType.String));
-            return parameters;
+            try
+            {
+                List<DbParameter> parameters = new List<DbParameter>();
+                parameters.Add(dbManager.CreateParameter("@Id", user.Id, DbType.Int64));
+                parameters.Add(dbManager.CreateParameter("@FirstName", 50, user.FirstName, DbType.String));
+                parameters.Add(dbManager.CreateParameter("@LastName", 50, user.LastName, DbType.String));
+                parameters.Add(dbManager.CreateParameter("@Email", 50, user.Email, DbType.String));
+                parameters.Add(dbManager.CreateParameter("@HashPassword", 50, user.HashPassword, DbType.String));
+                parameters.Add(dbManager.CreateParameter("@RoleId", 50, user.RoleId, DbType.String));
+                return parameters;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

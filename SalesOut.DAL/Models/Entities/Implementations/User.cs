@@ -14,12 +14,12 @@ namespace SalesOut.DAL.Repositories.Implementations
 
         public string HashPassword { get; set; }
 
-        public string Role { get; set; }
+        public string RoleId { get; set; }
 
         public override string ToString()
         {
-            return string.Format("Id = {0}\nName = {1}\n SurName={2} \nEmail = {3} \nHashPassword = {4}\nRole={5}",
-                Id, FirstName, LastName, Email, HashPassword, Role);
+            return string.Format("Id = {0}\nName = {1}\n SurName={2} \nEmail = {3} \nHashPassword = {4}\nRoleId={5}",
+                Id, FirstName, LastName, Email, HashPassword, RoleId);
         }
     }
 }

@@ -27,14 +27,14 @@ namespace SalesOut.ConsoleUI
 
             UsersRepository usersRepo = new UsersRepository();
 
-            User user = new User { Id = 2, FirstName = "A", LastName = "BASD", Email="AB@gmail.com", HashPassword="asd", Role="asd" };
-            user = usersRepo.Create(user);
+            User user = new User { Id = 14, FirstName = "Alll", LastName = "BASD", Email="AB@gmail.com", HashPassword="asd", RoleId="asd" };
+            //user = usersRepo.Create(user);
 
             //            Console.WriteLine(usersRepo.Update(user));
 
-            var res = usersRepo.Delete(3);
+            var res = usersRepo.Update(user);
 
-            IEnumerable<User> users = usersRepo.GetRange(2, 6);
+            IEnumerable<User> users = usersRepo.GetRange(3, 15);
             foreach (User el in users)
             {
                 Console.WriteLine("==================================");
