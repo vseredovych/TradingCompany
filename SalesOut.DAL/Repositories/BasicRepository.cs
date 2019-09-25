@@ -10,7 +10,7 @@ using SalesOut.DAL.Repository.Abstractions;
 
 namespace SalesOut.DAL.Repositories
 {
-    public class BasicRepository<TEntity, TFilter> : IRepository<TEntity, TFilter> 
+    public abstract class BasicRepository<TEntity, TFilter> : IRepository<TEntity, TFilter> 
         where TEntity: IBaseEntity, new()
         where TFilter: IFilterable, new()
     {
@@ -28,12 +28,11 @@ namespace SalesOut.DAL.Repositories
 
         public TEntity Create(TEntity entity)
         {
-            TFilter filter = EntityToFilter(entity);
-            filter.Id = null;
+            TFilter noIndexEntity = EntityToFilter(entity);
+            noIndexEntity.Id = null;
 
-            string commandText = commandBuilder.GetInsertCommand(GetFilterValues(filter));
-            var parameters = GetParameters(filter);
-
+            string commandText = commandBuilder.GetInsertCommand(GetFilterValues(noIndexEntity));
+            var parameters = GetParameters(noIndexEntity);
 
             try
             {
@@ -50,24 +49,21 @@ namespace SalesOut.DAL.Repositories
 
         public TEntity Update(TEntity entity, TFilter filter = default(TFilter))
         {
-            //string commandText = string.Format("Update {0} " +
-            //    "Set " +
-            //    "FirstName = @FirstName, " +
-            //    "LastName = @LastName, " +
-            //    "Email = @Email, " +
-            //    "HashPassword = @HashPassword, " +
-            //    "RoleId = @RoleId " +
-            //    "output inserted.Id " +
-            //    "Where Id = @Id;", _tableName);
+            TFilter noIndexEntity = EntityToFilter(entity);
+            noIndexEntity.Id = null;
 
-            string commandText = commandBuilder.GetUpdateCommand(GetEntityValues(entity), GetFilterValues(filter));
-            //GetParameters(entity);
-            //GetParameters(filter);
+            string commandText = commandBuilder.GetUpdateCommand( GetFilterValues(noIndexEntity), GetFilterValues(filter), "Filter" );
 
-            var parameters = GetParameters(entity);
+            var parametersEntity = GetParameters(entity);
+            var parametersFilter = GetParameters(filter, "Filter");
+
+            List<DbParameter> parameters = new List<DbParameter>();
+            parameters.AddRange(parametersEntity);
+            parameters.AddRange(parametersFilter);
+
             try
             {
-                entity.Id = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
+                entity.Id = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters) );
             }
             catch (Exception ex)
             {
@@ -79,40 +75,15 @@ namespace SalesOut.DAL.Repositories
 
         public bool Delete(TFilter filter = default(TFilter))
         {
-            //string commandText = string.Format("Delete from {0} " +
-            //                                    "output deleted.Id " +
-            //                                    "where Id = @Id", _tableName);
-            //var parameters = GetParameters(entity);
+            string commandText = commandBuilder.GetDeleteCommand(GetFilterValues(filter));
 
-            //try
-            //{
-            //    ulong deletedId = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
+            var parameters = GetParameters(filter);
 
-            //    if (entity.Id == deletedId)
-            //    {
-            //        return true;
-            //    }
-            //    return false;
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw new Exception(ex.Message);
-            //}
-            return true;
-        }
-
-        public bool Delete(ulong id, TFilter filter = default(TFilter))
-        {
-            string commandText = string.Format("Delete from {0} " +
-                                                "output deleted.Id " +
-                                                "where Id = @Id;", _tableName);
-            List<DbParameter> parameters = new List<DbParameter>();
-            parameters.Add(dbManager.CreateParameter("@Id", id, DbType.Int64));
             try
             {
                 ulong deletedId = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
 
-                if (id == deletedId)
+                if (deletedId != 0)
                 {
                     return true;
                 }
@@ -124,12 +95,11 @@ namespace SalesOut.DAL.Repositories
             }
         }
 
-        public TEntity Get(ulong id, TFilter filter = default(TFilter))
+        public TEntity Get(TFilter filter = default(TFilter))
         {
-            string commandText = string.Format("select * from {0} where Id = @Id;", _tableName);
-            List<IDbDataParameter> parameters = new List<IDbDataParameter>();
+            string commandText = commandBuilder.GetSellectCommand(GetFilterValues(filter));
+            var parameters = GetParameters(filter);
 
-            parameters.Add(dbManager.CreateParameter("@Id", filter.Id, DbType.Int64));
             using (var reader = dbManager.GetDataReader(commandText, parameters))
             {
                 TEntity entity = new TEntity();
@@ -145,89 +115,61 @@ namespace SalesOut.DAL.Repositories
             }
         }
 
-        public IEnumerable<TEntity> GetRange(ulong idStart, ulong idEnd, TFilter filter = default(TFilter))
+        public IEnumerable<TEntity> GetAll(TFilter filter = default(TFilter))
         {
-            string commandText = string.Format("Select * from {0} " +
-                                                "where Id >= @Start and Id <= @End;", _tableName);
-            List<IDbDataParameter> parameters = new List<IDbDataParameter>();
-            List<TEntity> users = new List<TEntity>();
-            TEntity entity = new TEntity();
+            string commandText = commandBuilder.GetSellectAllCommand(GetFilterValues(filter));
+            var parameters = GetParameters(filter);
 
-            parameters.Add(dbManager.CreateParameter("@Start", idStart, DbType.Int64));
-            parameters.Add(dbManager.CreateParameter("@End", idEnd, DbType.Int64));
+            List<TEntity> entities = new List<TEntity>();
+            TEntity entity = new TEntity();
 
             using (var reader = dbManager.GetDataReader(commandText, parameters))
             {
 
                 if (reader.IsClosed)
                 {
-                    return users;
+                    return entities;
                 }
 
                 while (reader.Read())
                 {
                     entity = FillEntity(reader);
-                    users.Add(entity);
+                    entities.Add(entity);
                 }
-                return users;
+                return entities;
             }
         }
 
-        public IEnumerable<TEntity> GetAll(TFilter filter = default(TFilter))
+        public IEnumerable<TEntity> GetRange(TFilter filterLeft, TFilter filterRight, TFilter filter = default(TFilter))
         {
-            string commandText = string.Format("Select * from {0};", _tableName);
-            List<TEntity> users = new List<TEntity>();
+            string commandText = commandBuilder.GetSellectRangeCommand(GetFilterValues(filterLeft), "Left", GetFilterValues(filterRight), "Right", GetFilterValues(filter) );
+
+            var parametersFilterLeft = GetParameters(filterLeft, "Left");
+            var parametersFilterRight = GetParameters(filterRight, "Right");
+            var parametersFilter = GetParameters(filter);
+
+            List<DbParameter> parameters = new List<DbParameter>();
+            parameters.AddRange(parametersFilterLeft);
+            parameters.AddRange(parametersFilterRight);
+            parameters.AddRange(parametersFilter);
+
+            List<TEntity> entities = new List<TEntity>();
             TEntity entity = new TEntity();
 
-            using (var reader = dbManager.GetDataReader(commandText))
+            using (var reader = dbManager.GetDataReader(commandText, parameters))
             {
-
                 if (reader.IsClosed)
                 {
-                    return users;
+                    return entities;
                 }
-
                 while (reader.Read())
                 {
                     entity = FillEntity(reader);
-                    users.Add(entity);
+                    entities.Add(entity);
                 }
-                return users;
+                return entities;
             }
         }
-        //public ulong GetScalarValue(string commandText)
-        //{
-        //    List<DbParameter> parameters = new List<DbParameter>();
-        //    try
-        //    {
-        //        object scalarValue = dbManager.GetScalarValue(commandText, parameters);
-        //        return Convert.ToUInt64(scalarValue);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //}
-
-        //public bool Delete(TEntity entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public TEntity Get(ulong id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public IEnumerable<TEntity> GetAll()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public TEntity Update(TEntity entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         virtual internal TEntity FillEntity(DbDataReader reader)
         {
@@ -241,11 +183,11 @@ namespace SalesOut.DAL.Repositories
         {
             return new List<string>();
         }
-        virtual internal List<DbParameter> GetParameters(TFilter filter)
+        virtual internal List<DbParameter> GetParameters(TFilter filter, string prefix = "")
         {
             return new List<DbParameter>();
         }
-        virtual internal List<DbParameter> GetParameters(TEntity entity)
+        virtual internal List<DbParameter> GetParameters(TEntity entity, string prefix = "")
         {
             return new List<DbParameter>();
         }

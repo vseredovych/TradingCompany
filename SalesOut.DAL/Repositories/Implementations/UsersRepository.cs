@@ -19,6 +19,10 @@ namespace SalesOut.DAL.Repositories.Implementations
 
         internal override User FillEntity(DbDataReader reader)
         {
+            if (reader.HasRows == false)
+            {
+                return null;
+            }
             try
             {
                 User entity = new User();
@@ -37,34 +41,39 @@ namespace SalesOut.DAL.Repositories.Implementations
             }
         }
 
-        internal override List<DbParameter> GetParameters(UserFilter entity)
+        internal override List<DbParameter> GetParameters(UserFilter filter, string prefix = "")
         {
+            if (filter == null)
+            {
+                return new List<DbParameter>();
+            }
             try
             {
+                prefix = "@" + prefix; 
                 List<DbParameter> parameters = new List<DbParameter>();
-                if (entity.Id != null)
+                if (filter.Id != null)
                 {
-                    parameters.Add(dbManager.CreateParameter("@Id", entity.Id, DbType.Int64));
+                    parameters.Add(dbManager.CreateParameter(prefix + "Id", filter.Id, DbType.Int64));
                 }
-                if (entity.FirstName != null)
+                if (filter.FirstName != null)
                 {
-                    parameters.Add(dbManager.CreateParameter("@FirstName", 50, entity.FirstName, DbType.String));
+                    parameters.Add(dbManager.CreateParameter(prefix + "FirstName", 50, filter.FirstName, DbType.String));
                 }
-                if (entity.LastName != null)
+                if (filter.LastName != null)
                 {
-                    parameters.Add(dbManager.CreateParameter("@LastName", 50, entity.LastName, DbType.String));
+                    parameters.Add(dbManager.CreateParameter(prefix + "LastName", 50, filter.LastName, DbType.String));
                 }
-                if (entity.Email != null)
+                if (filter.Email != null)
                 {
-                    parameters.Add(dbManager.CreateParameter("@Email", 50, entity.Email, DbType.String));
+                    parameters.Add(dbManager.CreateParameter(prefix + "Email", 50, filter.Email, DbType.String));
                 }
-                if (entity.HashPassword != null)
+                if (filter.HashPassword != null)
                 {
-                    parameters.Add(dbManager.CreateParameter("@HashPassword", 50, entity.HashPassword, DbType.String));
+                    parameters.Add(dbManager.CreateParameter(prefix + "HashPassword", 50, filter.HashPassword, DbType.String));
                 }
-                if (entity.RoleId != null)
+                if (filter.RoleId != null)
                 {
-                    parameters.Add(dbManager.CreateParameter("@RoleId", 50, entity.RoleId, DbType.String));
+                    parameters.Add(dbManager.CreateParameter(prefix + "RoleId", 50, filter.RoleId, DbType.String));
                 }
                 return parameters;
             }
@@ -73,17 +82,17 @@ namespace SalesOut.DAL.Repositories.Implementations
                 throw new Exception(ex.Message);
             }
         }
-        internal override List<DbParameter> GetParameters(User entity)
+        internal override List<DbParameter> GetParameters(User entity, string prefix = "")
         {
-            return GetParameters(EntityToFilter(entity));
+            return GetParameters(EntityToFilter(entity), prefix);
         }
         internal override List<string> GetFilterValues(UserFilter entity)
         {
-            List<string> valuesList = new List<string>();
             if (entity == null)
             {
-                return null;
+                return new List<string>();
             }
+            List<string> valuesList = new List<string>();
 
             if (entity.Id != null)
             {

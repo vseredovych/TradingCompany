@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SalesOut.DAL.Core;
 using SalesOut.DAL.Models.Entities.Implementations;
+using SalesOut.DAL.Models.Filters.Implementations;
 using SalesOut.DAL.Repositories.Implementations;
 
 namespace SalesOut.ConsoleUI
@@ -28,14 +29,16 @@ namespace SalesOut.ConsoleUI
 
             UsersRepository usersRepo = new UsersRepository();
 
-            User entity = new User { FirstName = "Alll", LastName = "BASD", Email="AB@gmail.com", HashPassword="asd", RoleId=1 };
+            User entity = new User { FirstName = "Alll", LastName = "PPP", Email="AB@softserveinc.com", HashPassword="asd", RoleId=1 };
             //entity = usersRepo.Create(entity);
 
             //            Console.WriteLine(usersRepo.Update(entity));
+            //usersRepo.Delete(new UserFilter() { FirstName = "Alll", Id = 1 });
+            //var res = usersRepo.Update(entity, new UserFilter() { Id = 2 });
+            //Console.WriteLine(usersRepo.Get(new UserFilter() {  }) );
+            //IEnumerable<User> users = usersRepo.GetRange(new UserFilter() {Id  = 0, RoleId = 0 }, new UserFilter() { Id = 4, RoleId = 2 }, new UserFilter() { Email = "AB@softserveinc.com" });
+            IEnumerable<User> users = usersRepo.GetAll(new UserFilter() { Id = 3} );
 
-            var res = usersRepo.Update(entity);
-
-            IEnumerable<User> users = usersRepo.GetRange(3, 15);
             foreach (User el in users)
             {
                 Console.WriteLine("==================================");

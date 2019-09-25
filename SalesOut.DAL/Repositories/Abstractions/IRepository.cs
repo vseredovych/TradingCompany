@@ -6,9 +6,9 @@ namespace SalesOut.DAL.Repository.Abstractions
 {
     public interface IRepository<TEntity, TFilter>
     {
-        TEntity Get(ulong id, TFilter filter = default(TFilter));
+        TEntity Get(TFilter filter = default(TFilter));
 
-        IEnumerable<TEntity> GetRange(ulong idStart, ulong idEnd, TFilter filter = default(TFilter));
+        IEnumerable<TEntity> GetRange(TFilter filterLeft, TFilter filterRight, TFilter filter = default(TFilter));
 
         IEnumerable<TEntity> GetAll(TFilter filter = default(TFilter));
 
