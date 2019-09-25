@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalesOut.DAL.Repositories.Implementations
 {
-    class SuppiersRepository
+    public class SuppiersRepository
     {
     }
 }

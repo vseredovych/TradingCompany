@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SalesOut.DAL.Core;
+using SalesOut.DAL.Models.Entities.Implementations;
 using SalesOut.DAL.Repositories.Implementations;
 
 namespace SalesOut.ConsoleUI
@@ -27,12 +28,12 @@ namespace SalesOut.ConsoleUI
 
             UsersRepository usersRepo = new UsersRepository();
 
-            User user = new User { Id = 14, FirstName = "Alll", LastName = "BASD", Email="AB@gmail.com", HashPassword="asd", RoleId="asd" };
-            //user = usersRepo.Create(user);
+            User entity = new User { FirstName = "Alll", LastName = "BASD", Email="AB@gmail.com", HashPassword="asd", RoleId=1 };
+            entity = usersRepo.Create(entity);
 
-            //            Console.WriteLine(usersRepo.Update(user));
+            //            Console.WriteLine(usersRepo.Update(entity));
 
-            var res = usersRepo.Update(user);
+            //var res = usersRepo.Update(entity);
 
             IEnumerable<User> users = usersRepo.GetRange(3, 15);
             foreach (User el in users)
@@ -41,7 +42,7 @@ namespace SalesOut.ConsoleUI
                 Console.WriteLine(el);
             }
 
-            //Console.WriteLine(user);
+            //Console.WriteLine(entity);
             //var _user = usersRepo.Get(0
             //Console.WriteLine(_user.FirstName + _user.LastName);
 

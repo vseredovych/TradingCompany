@@ -1,8 +1,13 @@
-﻿using SalesOut.DAL.Models.Entities.Abstractions;
+﻿using SalesOut.DAL.Repositories.Abstractions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SalesOut.DAL.Models.Entities.Implementations
+namespace SalesOut.DAL.Models.Filters.Implementations
 {
-    public class RoleId
+    class SupplierFilte
     {
         public ulong Id { get; set; }
         public string Name { get; set; }

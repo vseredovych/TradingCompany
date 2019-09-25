@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SalesOut.DAL.Models.Entities.Abstractions;
 
-namespace SalesOut.DAL.Models.Entities.Implementations
+namespace SalesOut.DAL.Models.Filters.Implementations
 {
-    class Order : IBaseEntity
+    class OrderFilter
     {
         public ulong Id { get; set; }
 

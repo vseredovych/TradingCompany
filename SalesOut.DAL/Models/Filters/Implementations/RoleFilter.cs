@@ -1,8 +1,8 @@
 ﻿using SalesOut.DAL.Models.Entities.Abstractions;
 
-namespace SalesOut.DAL.Models.Entities.Implementations
+namespace SalesOut.DAL.Models.Filters.Implementations
 {
-    public class RoleId
+    public class RoleIdFilter
     {
         public ulong Id { get; set; }
         public string Name { get; set; }

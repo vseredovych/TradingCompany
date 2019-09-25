@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace SalesOut.DAL.Models.Entities.Abstractions
+namespace SalesOut.DAL.Models
 {
-    public interface IBaseEntity
+    public interface IModel
     {
-        ulong Id { get; set; }
+        string a { get; set; }
     }
 }
