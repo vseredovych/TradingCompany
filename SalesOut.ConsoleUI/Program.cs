@@ -29,11 +29,11 @@ namespace SalesOut.ConsoleUI
             UsersRepository usersRepo = new UsersRepository();
 
             User entity = new User { FirstName = "Alll", LastName = "BASD", Email="AB@gmail.com", HashPassword="asd", RoleId=1 };
-            entity = usersRepo.Create(entity);
+            //entity = usersRepo.Create(entity);
 
             //            Console.WriteLine(usersRepo.Update(entity));
 
-            //var res = usersRepo.Update(entity);
+            var res = usersRepo.Update(entity);
 
             IEnumerable<User> users = usersRepo.GetRange(3, 15);
             foreach (User el in users)

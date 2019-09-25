@@ -11,59 +11,73 @@ namespace SalesOut.DAL.Core
 
         private readonly string _tableName;
 
-//        "Insert into {0} (FirstName, LastName, Email, HashPassword, RoleId) " +
-  //                                             "output inserted.Id " +
-    //                                           "values (@FirstName, @LastName, @Email, @HashPassword, @RoleId);"
+        //        "Insert into {0} (FirstName, LastName, Email, HashPassword, RoleId) " +
+            //                                             "output inserted.Id " +
+          //                                           "values (@FirstName, @LastName, @Email, @HashPassword, @RoleId);"
 
         public DbCommandManager(string _tableName)
         {
             this._tableName = _tableName;
         }
 
-        public string GetInsertCommand(List<string> values)
+        public string GetInsertCommand(List<string> entity)
         {
-
             string command = string.Format("Insert into {0} " +
                 "( {1} ) " +
                 "output inserted.Id " +
                 "values " +
                 "( {2} );", 
-                _tableName, 
-                values.Aggregate((a, b) => a + ", " + b), 
-                string.Format( "@" + values.Aggregate( (a, b) =>  a + ", @" + b) ) );
+                _tableName,
+                entity.Aggregate((a, b) => a + ", " + b), 
+                string.Format( "@" + entity.Aggregate( (a, b) =>  a + ", @" + b) ) );
 
             return command;
         }
 
-        public string GetSellectCommand(List<string> values)
+        public string GetSellectCommand(List<string> entity, List<string> filter)
         {
 
             return "";
         }
 
-        public string GetSellectRangeCommand(List<string> values)
+        public string GetSellectRangeCommand(List<string> entity, List<string> filter)
         {
 
             return "";
         }
 
-        public string GetUpdateCommand(List<string> values)
+        public string GetUpdateCommand(List<string> entity, List<string> filter)
         {
-            string.Format("Update {0} " +
-                "Set " +
-                "FirstName = @FirstName, " +
-                "LastName = @LastName, " +
-                "Email = @Email, " +
-                "HashPassword = @HashPassword, " +
-                "RoleId = @RoleId " +
-                "output inserted.Id " +
-                "Where Id = @Id;", _tableName);
+            string values = "";
+            string condition = "";
+            string command = "";
 
+            if ( entity != null && entity.Count > 0 )
+            {
+                values = string.Format("{0}",
+                    string.Format(entity[0] + " = @")  + entity.Aggregate((a, b) => a + ", " + b + " = @" + b));
+            }
+            if (entity != null && entity.Count > 0 )
+            {
+                condition = string.Format("Where {0}",
+                    string.Format("@" + entity.Aggregate((a, b) => a + ", @" + b)));
+            }
+            else
+            {
+                throw new Exception("No conditons for \"SET\" querry!");
+            }
 
-            return "";
+            command = string.Format("Update {0} " +
+                    "Set " +
+                    "{1} " +
+                    "output inserted.Id " +
+                    "{2} " +
+                    ";", _tableName, values, condition);
+
+            return command;
         }
 
-        public string GetDeleteCommand(Dictionary<string, string> values)
+        public string GetDeleteCommand(List<string> entity, List<string> filter)
         {
 
 

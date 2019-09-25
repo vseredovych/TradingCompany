@@ -31,8 +31,8 @@ namespace SalesOut.DAL.Repositories
             TFilter filter = EntityToFilter(entity);
             filter.Id = null;
 
-            string commandText = commandBuilder.GetInsertCommand(GetEntityValues(filter));
-            var parameters = GetParametrs(filter);
+            string commandText = commandBuilder.GetInsertCommand(GetFilterValues(filter));
+            var parameters = GetParameters(filter);
 
 
             try
@@ -48,36 +48,41 @@ namespace SalesOut.DAL.Repositories
             return entity;
         }
 
-        public TEntity Update(TEntity entity, IFilterable filter = null)
+        public TEntity Update(TEntity entity, TFilter filter = default(TFilter))
         {
-            string commandText = string.Format("Update {0} " +
-                "Set " +
-                "FirstName = @FirstName, " +
-                "LastName = @LastName, " +
-                "Email = @Email, " +
-                "HashPassword = @HashPassword, " +
-                "RoleId = @RoleId " +
-                "output inserted.Id " +
-                "Where Id = @Id;", _tableName);
+            //string commandText = string.Format("Update {0} " +
+            //    "Set " +
+            //    "FirstName = @FirstName, " +
+            //    "LastName = @LastName, " +
+            //    "Email = @Email, " +
+            //    "HashPassword = @HashPassword, " +
+            //    "RoleId = @RoleId " +
+            //    "output inserted.Id " +
+            //    "Where Id = @Id;", _tableName);
 
-            //var parameters = GetParametrs(new User);
-            //try
-            //{
-            //    entity.Id = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw new Exception(ex.Message);
-            //}
+            string commandText = commandBuilder.GetUpdateCommand(GetEntityValues(entity), GetFilterValues(filter));
+            //GetParameters(entity);
+            //GetParameters(filter);
+
+            var parameters = GetParameters(entity);
+            try
+            {
+                entity.Id = Convert.ToUInt64(dbManager.GetScalarValue(commandText, parameters));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
             return entity;
         }
-        public bool Delete(IFilterable filter = null)
+
+        public bool Delete(TFilter filter = default(TFilter))
         {
             //string commandText = string.Format("Delete from {0} " +
             //                                    "output deleted.Id " +
             //                                    "where Id = @Id", _tableName);
-            //var parameters = GetParametrs(entity);
+            //var parameters = GetParameters(entity);
 
             //try
             //{
@@ -96,7 +101,7 @@ namespace SalesOut.DAL.Repositories
             return true;
         }
 
-        public bool Delete(ulong id, IFilterable filter = null)
+        public bool Delete(ulong id, TFilter filter = default(TFilter))
         {
             string commandText = string.Format("Delete from {0} " +
                                                 "output deleted.Id " +
@@ -119,7 +124,7 @@ namespace SalesOut.DAL.Repositories
             }
         }
 
-        public TEntity Get(ulong id, IFilterable filter = null)
+        public TEntity Get(ulong id, TFilter filter = default(TFilter))
         {
             string commandText = string.Format("select * from {0} where Id = @Id;", _tableName);
             List<IDbDataParameter> parameters = new List<IDbDataParameter>();
@@ -140,7 +145,7 @@ namespace SalesOut.DAL.Repositories
             }
         }
 
-        public IEnumerable<TEntity> GetRange(ulong idStart, ulong idEnd, IFilterable filter = null)
+        public IEnumerable<TEntity> GetRange(ulong idStart, ulong idEnd, TFilter filter = default(TFilter))
         {
             string commandText = string.Format("Select * from {0} " +
                                                 "where Id >= @Start and Id <= @End;", _tableName);
@@ -168,7 +173,7 @@ namespace SalesOut.DAL.Repositories
             }
         }
 
-        public IEnumerable<TEntity> GetAll(IFilterable filter = null)
+        public IEnumerable<TEntity> GetAll(TFilter filter = default(TFilter))
         {
             string commandText = string.Format("Select * from {0};", _tableName);
             List<TEntity> users = new List<TEntity>();
@@ -228,7 +233,7 @@ namespace SalesOut.DAL.Repositories
         {
             return new TEntity();
         }
-        virtual internal List<string> GetEntityValues(TFilter filter)
+        virtual internal List<string> GetFilterValues(TFilter filter)
         {
             return new List<string>();
         }
@@ -236,15 +241,15 @@ namespace SalesOut.DAL.Repositories
         {
             return new List<string>();
         }
-        virtual internal List<DbParameter> GetParametrs(TFilter filter)
+        virtual internal List<DbParameter> GetParameters(TFilter filter)
         {
             return new List<DbParameter>();
         }
-        virtual internal List<DbParameter> GetParametrs(TEntity entity)
+        virtual internal List<DbParameter> GetParameters(TEntity entity)
         {
             return new List<DbParameter>();
         }
-        virtual internal TFilter EntityToFilter(TEntity entity)
+        virtual internal  TFilter EntityToFilter(TEntity entity)
         {
             return new TFilter();
         }

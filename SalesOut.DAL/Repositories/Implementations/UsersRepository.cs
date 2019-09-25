@@ -37,7 +37,7 @@ namespace SalesOut.DAL.Repositories.Implementations
             }
         }
 
-        internal override List<DbParameter> GetParametrs(UserFilter entity)
+        internal override List<DbParameter> GetParameters(UserFilter entity)
         {
             try
             {
@@ -73,13 +73,17 @@ namespace SalesOut.DAL.Repositories.Implementations
                 throw new Exception(ex.Message);
             }
         }
-        internal override List<DbParameter> GetParametrs(User entity)
+        internal override List<DbParameter> GetParameters(User entity)
         {
-            return GetParametrs(EntityToFilter(entity));
+            return GetParameters(EntityToFilter(entity));
         }
-        internal override List<string> GetEntityValues(UserFilter entity)
+        internal override List<string> GetFilterValues(UserFilter entity)
         {
             List<string> valuesList = new List<string>();
+            if (entity == null)
+            {
+                return null;
+            }
 
             if (entity.Id != null)
             {
@@ -107,9 +111,9 @@ namespace SalesOut.DAL.Repositories.Implementations
             }
             return valuesList;
         }
-        internal override List<string> GetEntityValues(User entity)
+        internal  override List<string> GetEntityValues(User entity)
         {
-            return GetEntityValues(EntityToFilter(entity));
+            return GetFilterValues(EntityToFilter(entity));
         }
         internal override UserFilter EntityToFilter(User entity)
         {
