@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesOut.DAL.Repositories.Abstractions
+namespace SalesOut.DAL.Models.Filters.Abstractions
 {
     public interface IFilterable
     {

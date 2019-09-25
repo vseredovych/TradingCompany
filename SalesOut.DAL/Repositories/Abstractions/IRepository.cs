@@ -1,8 +1,8 @@
-﻿using SalesOut.DAL.Repositories.Abstractions;
+﻿using SalesOut.DAL.Models.Filters.Abstractions;
 using System;
 using System.Collections.Generic;
 
-namespace SalesOut.DAL.Models.Entities.Abstractions
+namespace SalesOut.DAL.Repository.Abstractions
 {
 
     //public interface IRepository<TEnt> { }

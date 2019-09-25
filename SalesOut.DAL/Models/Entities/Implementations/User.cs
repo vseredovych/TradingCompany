@@ -1,5 +1,4 @@
 ﻿using SalesOut.DAL.Models.Filters.Implementations;
-using SalesOut.DAL.Repositories.Abstractions;
 using SalesOut.DAL.Core;
 using System;
 using System.Collections.Generic;

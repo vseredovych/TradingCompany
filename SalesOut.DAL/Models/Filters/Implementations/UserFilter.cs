@@ -1,7 +1,7 @@
-﻿using SalesOut.DAL.Repositories.Abstractions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using SalesOut.DAL.Models.Entities.Abstractions;
+using SalesOut.DAL.Models.Filters.Abstractions;
 
 namespace SalesOut.DAL.Models.Filters.Implementations
 {

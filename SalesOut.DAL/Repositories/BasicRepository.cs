@@ -3,12 +3,10 @@ using SalesOut.DAL.Core;
 
 using System;
 using System.Collections.Generic;
-using SalesOut.DAL.Repositories.Implementations;
 using System.Data.Common;
-using SalesOut.DAL.Models.Filters.Implementations;
-using SalesOut.DAL.Repositories.Abstractions;
 using System.Data;
-using SalesOut.DAL.Models;
+using SalesOut.DAL.Models.Filters.Abstractions;
+using SalesOut.DAL.Repository.Abstractions;
 
 namespace SalesOut.DAL.Repositories
 {
