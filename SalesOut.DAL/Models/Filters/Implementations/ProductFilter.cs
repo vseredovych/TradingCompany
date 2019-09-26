@@ -15,9 +15,9 @@ namespace SalesOut.DAL.Models.Filters.Implementations
 
         public string Brand { get; set; }
 
-        public ulong ProducingCountry { get; set; }
+        public string ProducingCountry { get; set; }
 
-        public ulong Price { get; set; }
+        public int? Price { get; set; }
 
         public override string ToString()
         {

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SalesOut.DAL.Models.Entities.Abstractions;
 
 namespace SalesOut.DAL.Models.Entities.Implementations
 {
-    class Product
+    public class Product : IBaseEntity
     {
         public ulong Id { get; set; }
 
@@ -14,9 +10,9 @@ namespace SalesOut.DAL.Models.Entities.Implementations
 
         public string Brand { get; set; }
 
-        public ulong ProducingCountry { get; set; }
+        public string ProducingCountry { get; set; }
 
-        public ulong Price { get; set; }
+        public int Price { get; set; }
 
         public override string ToString()
         {

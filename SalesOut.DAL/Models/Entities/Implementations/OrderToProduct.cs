@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SalesOut.DAL.Models.Entities.Abstractions;
 
 namespace SalesOut.DAL.Models.Entities.Implementations
 {
-    class OrderToProduct
+    public class OrderToProduct : IBaseEntity
     {
+        public ulong Id { get; set; }
         public ulong ProductId { get; set; }
 
         public ulong OrderId { get; set; }

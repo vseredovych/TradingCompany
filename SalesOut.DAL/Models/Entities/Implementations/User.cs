@@ -1,10 +1,4 @@
-﻿using SalesOut.DAL.Models.Filters.Implementations;
-using SalesOut.DAL.Core;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using SalesOut.DAL.Models.Entities.Abstractions;
+﻿using SalesOut.DAL.Models.Entities.Abstractions;
 
 namespace SalesOut.DAL.Models.Entities.Implementations
 {

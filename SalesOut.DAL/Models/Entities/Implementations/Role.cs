@@ -2,7 +2,7 @@
 
 namespace SalesOut.DAL.Models.Entities.Implementations
 {
-    public class RoleId
+    public class RoleId : IBaseEntity
     {
         public ulong Id { get; set; }
         public string Name { get; set; }
