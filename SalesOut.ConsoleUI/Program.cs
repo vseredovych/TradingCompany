@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SalesOut.DAL.Core;
+using SalesOut.DAL.Database;
 using SalesOut.DAL.Models.Entities.Implementations;
 using SalesOut.DAL.Models.Filters.Implementations;
 using SalesOut.DAL.Repositories.Implementations;
@@ -16,6 +17,8 @@ namespace SalesOut.ConsoleUI
         static void Main(string[] args)
         {
             DbManager dbManager = new DbManager();
+            MigrationManager migrationManager = new MigrationManager();
+            migrationManager.CreateTables();
 
             //dbManager.CommandExecuteNonQuery(@"insert into tblRole (Name) Values ('Admin'), ('Customer');");
             //var reader = dbManager.GetDataReader(@"select Id, Name from tblRole;");
