@@ -3,7 +3,7 @@ using SalesOut.DAL.Models.Filters.Abstractions;
 
 namespace SalesOut.DAL.Models.Filters.Implementations
 {
-    public class RoleIdFilter : IFilterable
+    public class RoleFilter : IFilterable
     {
         public ulong? Id { get; set; }
         public string Name { get; set; }
