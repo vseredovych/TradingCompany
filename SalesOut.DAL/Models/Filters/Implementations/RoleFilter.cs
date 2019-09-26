@@ -1,10 +1,11 @@
 ﻿using SalesOut.DAL.Models.Entities.Abstractions;
+using SalesOut.DAL.Models.Filters.Abstractions;
 
 namespace SalesOut.DAL.Models.Filters.Implementations
 {
-    public class RoleIdFilter
+    public class RoleIdFilter : IFilterable
     {
-        public ulong Id { get; set; }
+        public ulong? Id { get; set; }
         public string Name { get; set; }
         public override string ToString()
         {

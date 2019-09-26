@@ -1,6 +1,4 @@
-﻿using SalesOut.DAL.Core;
-using SalesOut.DAL.Models;
-using SalesOut.DAL.Models.Entities.Implementations;
+﻿using SalesOut.DAL.Models.Entities.Implementations;
 using SalesOut.DAL.Models.Filters.Implementations;
 using System;
 using System.Collections.Generic;
@@ -11,12 +9,11 @@ namespace SalesOut.DAL.Repositories.Implementations
 {
     public class UsersRepository : BasicRepository<User, UserFilter>
     {
-        //public readonly string _tableName = "tblUsers";
         internal static readonly string tableName = "tblUsers";
 
         public UsersRepository() : base(tableName) { }
+        
         //CRUD
-
         internal override User FillEntity(DbDataReader reader)
         {
             if (reader.HasRows == false)

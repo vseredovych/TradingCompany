@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesOut.DAL.Models.Filters.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SalesOut.DAL.Models.Filters.Implementations
 {
-    class OrderFilter
+    public class OrderFilter : IFilterable
     {
-        public ulong Id { get; set; }
+        public ulong? Id { get; set; }
 
-        public string UserId { get; set; }
+        public ulong? UserId { get; set; }
 
         public string Destination { get; set; }
 

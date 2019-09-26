@@ -18,6 +18,7 @@ namespace SalesOut.ConsoleUI
         {
             DbManager dbManager = new DbManager();
             MigrationManager migrationManager = new MigrationManager();
+            //migrationManager.DropTables();
             migrationManager.CreateTables();
 
             //dbManager.CommandExecuteNonQuery(@"insert into tblRole (Name) Values ('Admin'), ('Customer');");

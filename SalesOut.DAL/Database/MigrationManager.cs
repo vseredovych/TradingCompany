@@ -14,7 +14,15 @@ namespace SalesOut.DAL.Database
 
         public bool CreateTables()
         {
-            string path = System.IO.Path.GetFullPath(@"..\..\..\SalesOut.DAL\Database\create_tables.txt");
+            string path = System.IO.Path.GetFullPath(@"..\..\..\SalesOut.DAL\Database\create_tables.sql");
+            string script = File.ReadAllText(path);
+            dbManager.ExecuteNonQuery(script);
+
+            return true;
+        }
+        public bool DropTables()
+        {
+            string path = System.IO.Path.GetFullPath(@"..\..\..\SalesOut.DAL\Database\drop_tables.sql");
             string script = File.ReadAllText(path);
             dbManager.ExecuteNonQuery(script);
 

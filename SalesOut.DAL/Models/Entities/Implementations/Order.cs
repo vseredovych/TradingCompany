@@ -7,11 +7,11 @@ using SalesOut.DAL.Models.Entities.Abstractions;
 
 namespace SalesOut.DAL.Models.Entities.Implementations
 {
-    class Order : IBaseEntity
+    public class Order : IBaseEntity
     {
         public ulong Id { get; set; }
 
-        public string UserId { get; set; }
+        public ulong UserId { get; set; }
 
         public string Destination { get; set; }
 
