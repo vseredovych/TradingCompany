@@ -14,7 +14,7 @@ namespace SalesOut.DAL.Models.Filters.Implementations
 
         public ulong? OrderId { get; set; }
 
-        public ulong? Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         public override string ToString()
         {
