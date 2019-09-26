@@ -19,7 +19,7 @@ namespace SalesOut.ConsoleUI
             DbManager dbManager = new DbManager();
             MigrationManager migrationManager = new MigrationManager();
             //migrationManager.DropTables();
-            migrationManager.CreateTables();
+            //migrationManager.CreateTables();
 
             //dbManager.CommandExecuteNonQuery(@"insert into tblRole (Name) Values ('Admin'), ('Customer');");
             //var reader = dbManager.GetDataReader(@"select Id, Name from tblRole;");
