@@ -7,11 +7,11 @@ using System.Data.Common;
 
 namespace SalesOut.DAL.Repositories.Implementations
 {
-    public class OrdersToProductsRepository : BasicRepository<OrderToProduct, OrderToProductFilter>
+    public class OrderToProductsRepository : BasicRepository<OrderToProduct, OrderToProductFilter>
     {
         internal static readonly string tableName = "tblOrdersToProducts";
 
-        public OrdersToProductsRepository() : base(tableName) { }
+        public OrderToProductsRepository() : base(tableName) { }
 
         //CRUD
         internal override OrderToProduct FillEntity(DbDataReader reader)
