@@ -82,6 +82,7 @@
     <Compile Include="Repositories\Implementations\UsersRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Database\import_start_values.sql" />
     <Content Include="Database\drop_tables.sql" />
     <Content Include="Database\create_tables.sql" />
   </ItemGroup>

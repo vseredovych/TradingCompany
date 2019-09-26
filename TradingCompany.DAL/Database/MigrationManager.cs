@@ -29,5 +29,13 @@ namespace TradingCompany.DAL.Database
             return true;
         }
 
+        public bool ImportStartValues()
+        {
+            string path = System.IO.Path.GetFullPath(@"..\..\..\TradingCompany.DAL\Database\import_start_values.sql");
+            string script = File.ReadAllText(path);
+            dbManager.ExecuteNonQuery(script);
+
+            return true;
+        }
     }
 }
