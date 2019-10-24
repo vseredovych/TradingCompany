@@ -1,9 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TradingCompany.DAL.Core;
 using TradingCompany.DAL.Database;
 using TradingCompany.DAL.Models.Entities.Implementations;
@@ -22,6 +19,15 @@ namespace TradingCompany.ConsoleUI
             migrationManager.CreateTables();
             migrationManager.ImportStartValues();
 
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<UserFilter, User>();
+            });
+            IMapper mapper = config.CreateMapper();
+
+            UserFilter userFilter = new UserFilter() { Email = "adasd",  FirstName="asd", HashPassword="asd", LastName="asd" };
+            var user = mapper.Map<UserFilter, User> (userFilter);
+
+            Console.WriteLine(user);
 
             //dbManager.CommandExecuteNonQuery(@"insert into tblRole (Name) Values ('Admin'), ('Customer');");
             //var reader = dbManager.GetDataReader(@"select Id, Name from tblRole;");
@@ -35,7 +41,7 @@ namespace TradingCompany.ConsoleUI
 
             UsersRepository usersRepo = new UsersRepository();
 
-            User entity = new User { FirstName = "Alll", LastName = "PPP", Email="AB@softserveinc.com", HashPassword="asd", RoleId=1 };
+            User entity = new User { FirstName = "Alll", LastName = "PPP", Email = "AB@softserveinc.com", HashPassword = "asd", RoleId = 1 };
             //entity = usersRepo.Create(entity);
 
             //            Console.WriteLine(usersRepo.Update(entity));
@@ -43,7 +49,7 @@ namespace TradingCompany.ConsoleUI
             //var res = usersRepo.Update(entity, new UserFilter() { Id = 2 });
             //Console.WriteLine(usersRepo.Get(new UserFilter() {  }) );
             //IEnumerable<User> users = usersRepo.GetRange(new UserFilter() {Id  = 0, RoleId = 0 }, new UserFilter() { Id = 4, RoleId = 2 }, new UserFilter() { Email = "AB@softserveinc.com" });
-            IEnumerable<User> users = usersRepo.GetAll(new UserFilter() { Id = 3} );
+            IEnumerable<User> users = usersRepo.GetAll(new UserFilter() { Id = 3 });
 
             foreach (User el in users)
             {

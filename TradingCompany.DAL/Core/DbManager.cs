@@ -11,6 +11,7 @@ namespace TradingCompany.DAL.Core
     public class DbManager
     {
         //private readonly string _invariant = "System.Data.SqlClient";
+
         public DbConnection CreateConnection()
         {
             string provider = ConfigurationManager.AppSettings["provider"];
@@ -36,14 +37,14 @@ namespace TradingCompany.DAL.Core
         {
             return DbProviderFactories.GetFactory(connection).CreateParameter();
         }
-        public DbCommand CreateDbCommand(DbConnection connection)
+        public DbCommand CreateDbCommand(IDbConnection connection)
         {
-            return DbProviderFactories.GetFactory(connection).CreateCommand();
+            return DbProviderFactories.GetFactory((DbConnection)connection).CreateCommand();
         }
-        public DbCommand CreateDbCommand(DbConnection connection, string commandText)
+        public DbCommand CreateDbCommand(IDbConnection connection, string commandText)
         {
             var command = CreateDbCommand(connection);
-            command.Connection = connection;
+            command.Connection = (DbConnection)connection;
             command.CommandText = commandText;
             return command;
         }
@@ -71,10 +72,11 @@ namespace TradingCompany.DAL.Core
         public DbDataReader GetDataReader(string commandText, IEnumerable<IDbDataParameter> parameters)
         {
             DbDataReader reader = null;
+            var connection = ConnectionManager.Get().GetConnection();
 
             try
             {
-                var connection = this.CreateConnection();
+                    //this.CreateConnection();
                 connection.Open();
 
                 var command = this.CreateDbCommand(connection, commandText);
@@ -94,6 +96,13 @@ namespace TradingCompany.DAL.Core
             {
                 throw new Exception(ex.Message);
             }
+            //finally
+            //{
+            //    if ((connection != null) && (connection.State == System.Data.ConnectionState.Open))
+            //    {
+            //        connection.Close();
+            //    }
+            //}
         }
 
         public DbDataReader GetDataReader(string commandText)
@@ -101,7 +110,7 @@ namespace TradingCompany.DAL.Core
             DbDataReader reader = null;
             try
             {
-                var connection = this.CreateConnection();
+                var connection = ConnectionManager.Get().GetConnection();
                 connection.Open();
 
                 var command = this.CreateDbCommand(connection, commandText);
@@ -118,7 +127,7 @@ namespace TradingCompany.DAL.Core
 
         public void ExecuteNonQuery(string commandText, IEnumerable<IDbDataParameter> parameters)
         {
-            using (var connection = this.CreateConnection())
+            using (var connection = ConnectionManager.Get().GetConnection())
             {
                 connection.Open();
 
@@ -137,7 +146,7 @@ namespace TradingCompany.DAL.Core
         }
         public void ExecuteNonQuery(string commandText)
         {
-            using (var connection = this.CreateConnection())
+            using (var connection = ConnectionManager.Get().GetConnection())
             {
                 connection.Open();
 
@@ -145,11 +154,12 @@ namespace TradingCompany.DAL.Core
                 {
                     command.ExecuteNonQuery();
                 }
+                ConnectionManager.CloseConnections();
             }
         }
         public object GetScalarValue(string commandText, IEnumerable<IDbDataParameter> parameters = null)
         {
-            using (var connection = this.CreateConnection())
+            using (var connection = ConnectionManager.Get().GetConnection())
             {
                 connection.Open();
 
@@ -171,7 +181,7 @@ namespace TradingCompany.DAL.Core
         {
             IDbTransaction transaction = null;
 
-            using (var connection = CreateConnection())
+            using (var connection = ConnectionManager.Get().GetConnection())
             {
                 connection.Open();
                 transaction = connection.BeginTransaction();

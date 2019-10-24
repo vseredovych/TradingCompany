@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -51,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\ConnectionManager.cs" />
     <Compile Include="Core\DbCommandManager.cs" />
     <Compile Include="Core\DbManager.cs" />
     <Compile Include="Database\MigrationManager.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="Models\Filters\Implementations\SupplierFilter.cs" />
     <Compile Include="Models\Filters\Implementations\SupplierToProductFilter.cs" />
     <Compile Include="Models\Filters\Implementations\UserFilter.cs" />
+    <Compile Include="Models\MapperConfig.cs" />
     <Compile Include="Repositories\Abstractions\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BasicRepository.cs" />
@@ -85,6 +90,9 @@
     <Content Include="Database\import_start_values.sql" />
     <Content Include="Database\drop_tables.sql" />
     <Content Include="Database\create_tables.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
