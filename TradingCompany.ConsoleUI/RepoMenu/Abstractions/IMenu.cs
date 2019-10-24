@@ -9,8 +9,9 @@ namespace TradingCompany.ConsoleUI.Abstractions.RepoMenu
     public interface IMenu<TRepository, TEnity>
     {
         void Add();
-        void Delete(int id);
-        void Update(int id);
+        void Delete(ulong id);
+        void Update(ulong id);
         IEnumerable<TEnity> GetAll();
+        void OutputValues();
     }
 }

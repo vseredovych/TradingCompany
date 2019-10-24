@@ -10,11 +10,9 @@ using TradingCompany.DAL.Repository.Abstractions;
 
 namespace TradingCompany.ConsoleUI.RepoMenu
 {
-    //    public abstract class BasicRepository<TEntity, TFilter> : IRepository<TEntity, TFilter>
-    //    where TEntity : IBaseEntity, new()
-
     public abstract class BaseMenu<TRepository, TEntity, TFilter> : IMenu<TRepository, TEntity> 
         where TEntity : IBaseEntity, new()
+        where TFilter : IFilterable, new()
         where TRepository : IRepository<TEntity, TFilter>, new()
     {
         TRepository repository;
@@ -27,21 +25,20 @@ namespace TradingCompany.ConsoleUI.RepoMenu
             TEntity entity = InputValues();
             repository.Create(entity);
         }
-        public void Delete(int id)
+        public void Delete(ulong id)
         {
-            TEntity entity = InputValues();
-            repository.Create(entity);
+            repository.Delete(new TFilter() { Id = id});
         }
-        public void Update(int id)
+        public void Update(ulong id)
         {
             TEntity entity = InputValues();
-            repository.Create(entity);
+            repository.Update(entity, new TFilter() { Id = id });
         }
         public IEnumerable<TEntity> GetAll()
         {
             return repository.GetAll();
         }
-        protected void OutputValues()
+        public void OutputValues()
         {
             foreach (var entity in GetAll())
             {

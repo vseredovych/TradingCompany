@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using TradingCompany.ConsoleUI.UI;
 using TradingCompany.DAL.Core;
 using TradingCompany.DAL.Database;
 using TradingCompany.DAL.Models.Entities.Implementations;
@@ -13,8 +14,19 @@ namespace TradingCompany.ConsoleUI
     {
         static void Main(string[] args)
         {
-            DbManager dbManager = new DbManager();
-            MigrationManager migrationManager = new MigrationManager();
+            //DbManager dbManager = new DbManager();
+            //MigrationManager migrationManager = new MigrationManager();
+
+
+            Menu menu = new Menu();
+            menu.MainMenu();
+
+
+
+
+
+
+
             //migrationManager.DropTables();
             //migrationManager.CreateTables();
             //migrationManager.ImportStartValues();
@@ -63,18 +75,18 @@ namespace TradingCompany.ConsoleUI
             //Supplier supplier = new Supplier() { Id = 1, Name = "asd" };
             //suppliersRepository.Create(supplier);
 
-            ProductsRepository productsRepository = new ProductsRepository();
-            Product product = new Product() { Id = 1, Name = "asd", Brand="asd", Price=123, ProducingCountry="asd"};
-            productsRepository.Create(product);
-            var products = productsRepository.GetAll();
+            //ProductsRepository productsRepository = new ProductsRepository();
+            //Product product = new Product() { Id = 1, Name = "asd", Brand="asd", Price=123, ProducingCountry="asd"};
+            //productsRepository.Create(product);
+            //var products = productsRepository.GetAll();
 
 
-            foreach (Product el in products)
-            {
-               Console.WriteLine("==================================");
-               Console.WriteLine(el);
-            }
-            Console.Read();
+            //foreach (Product el in products)
+            //{
+            //   Console.WriteLine("==================================");
+            //   Console.WriteLine(el);
+            //}
+            //Console.Read();
         }
     }
 }
