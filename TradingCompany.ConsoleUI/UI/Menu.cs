@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TradingCompany.ConsoleUI.Abstractions.RepoMenu;
-using TradingCompany.ConsoleUI.Implementations.RepoMenu;
+using TradingCompany.ConsoleUI.RepoMenu.Implementations;
 using TradingCompany.DAL.Models.Entities.Abstractions;
 using TradingCompany.DAL.Models.Filters.Abstractions;
 using TradingCompany.DAL.Repository.Abstractions;
@@ -15,7 +15,14 @@ namespace TradingCompany.ConsoleUI.UI
         private List<string> MainMenuValues;
         private List<string> TablesMenuValues;
         private List<string> ActionsMenuValues;
+
         private UserMenu userMenu;
+        private SupplierToProductMenu suppToProdtMenu;
+        private RoleMenu roleMenu;
+        private ProductMenu product;
+        private OrderToProductMenu orderToProduct;
+        private OrderMenu order;
+        private SupplierMenu supplierMenu;
 
         public Menu()
         {
@@ -26,8 +33,14 @@ namespace TradingCompany.ConsoleUI.UI
         public void Initialize()
         {
             userMenu = new UserMenu();
+            suppToProdtMenu = new SupplierToProductMenu();
+            
+            roleMenu = new RoleMenu();
+            product = new ProductMenu();
+            supplierMenu = new SupplierMenu();
+
             this.ActionsMenuValues = new List<string>(){ "1. Create", "2. Delete", "3. Update", "4. Show", "5. Exit" };
-            this.TablesMenuValues = new List<string>() { "1. User", "2. Exit" };
+            this.TablesMenuValues = new List<string>() { "1. User", "2. Supplier", "3. SuppliersToProducts", "4. Roles", "5. Product", "6. OrderToProduct", "7. Order", "2. Exit" };
             this.MainMenuValues = new List<string>() { "1. Tables", "2. Exit" };
         }
         public void MainMenu()
@@ -123,11 +136,43 @@ namespace TradingCompany.ConsoleUI.UI
         }
         private void PrintTable(int chosenTable)
         {
+            this.TablesMenuValues = new List<string>() { "1. User", "2. Supplier", "3. SuppliersToProducts", "4. Roles", "5. Product", "6. OrderToProduct", "7. Order", "2. Exit" };
+
             switch (chosenTable)
             {
                 case 1:
                     userMenu.OutputValues();
-                    Console.WriteLine("Press any key to continue.");
+                    Console.WriteLine("Press 'Enter' key to continue.");
+                    Console.Read();
+                    break;
+                case 2:
+                    supplierMenu.OutputValues();
+                    Console.WriteLine("Press 'Enter' key to continue.");
+                    Console.Read();
+                    break;
+                case 3:
+                    userMenu.OutputValues();
+                    Console.WriteLine("Press 'Enter' key to continue.");
+                    Console.Read();
+                    break;
+                case 4:
+                    userMenu.OutputValues();
+                    Console.WriteLine("Press 'Enter' key to continue.");
+                    Console.Read();
+                    break;
+                case 5:
+                    userMenu.OutputValues();
+                    Console.WriteLine("Press 'Enter' key to continue.");
+                    Console.Read();
+                    break;
+                case 6:
+                    userMenu.OutputValues();
+                    Console.WriteLine("Press 'Enter' key to continue.");
+                    Console.Read();
+                    break;
+                case 7:
+                    userMenu.OutputValues();
+                    Console.WriteLine("Press 'Enter' key to continue.");
                     Console.Read();
                     break;
             }
@@ -162,6 +207,7 @@ namespace TradingCompany.ConsoleUI.UI
                 case 1:
                     userMenu.Delete(id);
                     break;
+              
             }
         }
     }
