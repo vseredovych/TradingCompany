@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TradingCompany.DAL.Models.Filters.Implementations
 {
-    public class SupplierFilte : IFilterable
+    public class SupplierFilter : IFilterable
     {
         public ulong? Id { get; set; }
         public string Name { get; set; }

@@ -85,13 +85,5 @@ namespace TradingCompany.DAL.Repositories.Implementations
         {
             return GetFilterValues(EntityToFilter(entity));
         }
-        internal override RoleFilter EntityToFilter(Role entity)
-        {
-            return new RoleFilter()
-            {
-                Id = entity.Id,
-                Name = entity.Name,
-            };
-        }
     }
 }

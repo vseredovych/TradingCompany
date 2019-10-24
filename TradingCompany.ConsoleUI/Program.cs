@@ -15,20 +15,15 @@ namespace TradingCompany.ConsoleUI
         {
             DbManager dbManager = new DbManager();
             MigrationManager migrationManager = new MigrationManager();
-            migrationManager.DropTables();
-            migrationManager.CreateTables();
-            migrationManager.ImportStartValues();
+            //migrationManager.DropTables();
+            //migrationManager.CreateTables();
+            //migrationManager.ImportStartValues();
 
-            var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<UserFilter, User>();
-            });
-            IMapper mapper = config.CreateMapper();
 
-            UserFilter userFilter = new UserFilter() { Email = "adasd",  FirstName="asd", HashPassword="asd", LastName="asd" };
-            var user = mapper.Map<UserFilter, User> (userFilter);
+            //UserFilter userFilter = new UserFilter() { Email = "adasd",  FirstName="asd", HashPassword="asd", LastName="asd" };
+            //var user = mapper.Map<UserFilter, User> (userFilter);
 
-            Console.WriteLine(user);
-
+            //Console.WriteLine(user);
             //dbManager.CommandExecuteNonQuery(@"insert into tblRole (Name) Values ('Admin'), ('Customer');");
             //var reader = dbManager.GetDataReader(@"select Id, Name from tblRole;");
 
@@ -39,9 +34,9 @@ namespace TradingCompany.ConsoleUI
             //}
 
 
-            UsersRepository usersRepo = new UsersRepository();
+            //UsersRepository usersRepo = new UsersRepository();
 
-            User entity = new User { FirstName = "Alll", LastName = "PPP", Email = "AB@softserveinc.com", HashPassword = "asd", RoleId = 1 };
+            //User entity = new User { FirstName = "Alll", LastName = "PPP", Email = "AB@softserveinc.com", HashPassword = "asd", RoleId = 1 };
             //entity = usersRepo.Create(entity);
 
             //            Console.WriteLine(usersRepo.Update(entity));
@@ -49,21 +44,37 @@ namespace TradingCompany.ConsoleUI
             //var res = usersRepo.Update(entity, new UserFilter() { Id = 2 });
             //Console.WriteLine(usersRepo.Get(new UserFilter() {  }) );
             //IEnumerable<User> users = usersRepo.GetRange(new UserFilter() {Id  = 0, RoleId = 0 }, new UserFilter() { Id = 4, RoleId = 2 }, new UserFilter() { Email = "AB@softserveinc.com" });
-            IEnumerable<User> users = usersRepo.GetAll(new UserFilter() { Id = 3 });
 
-            foreach (User el in users)
-            {
-                Console.WriteLine("==================================");
-                Console.WriteLine(el);
-            }
+
+            //IEnumerable<User> users = usersRepo.GetAll();
+
+            //foreach (User el in users)
+            //{
+            //   Console.WriteLine("==================================");
+            //    Console.WriteLine(el);
+            //}
 
             //Console.WriteLine(entity);
             //var _user = usersRepo.Get(0
             //Console.WriteLine(_user.FirstName + _user.LastName);
 
 
-            Console.Read();
+            //SuppliersRepository suppliersRepository = new SuppliersRepository();
+            //Supplier supplier = new Supplier() { Id = 1, Name = "asd" };
+            //suppliersRepository.Create(supplier);
 
+            ProductsRepository productsRepository = new ProductsRepository();
+            Product product = new Product() { Id = 1, Name = "asd", Brand="asd", Price=123, ProducingCountry="asd"};
+            productsRepository.Create(product);
+            var products = productsRepository.GetAll();
+
+
+            foreach (Product el in products)
+            {
+               Console.WriteLine("==================================");
+               Console.WriteLine(el);
+            }
+            Console.Read();
         }
     }
 }

@@ -73,7 +73,7 @@
     <Compile Include="Models\Filters\Implementations\SupplierFilter.cs" />
     <Compile Include="Models\Filters\Implementations\SupplierToProductFilter.cs" />
     <Compile Include="Models\Filters\Implementations\UserFilter.cs" />
-    <Compile Include="Models\MapperConfig.cs" />
+    <Compile Include="Models\ObjectsMapper.cs" />
     <Compile Include="Repositories\Abstractions\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BasicRepository.cs" />

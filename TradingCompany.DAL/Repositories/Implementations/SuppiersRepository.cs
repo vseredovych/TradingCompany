@@ -7,14 +7,14 @@ using System.Data.Common;
 
 namespace TradingCompany.DAL.Repositories.Implementations
 {
-    public class SuppliersRepository : BasicRepository<Role, RoleFilter>
+    public class SuppliersRepository : BasicRepository<Supplier, RoleFilter>
     {
         internal static readonly string tableName = "tblSuppliers";
 
         public SuppliersRepository() : base(tableName) { }
 
         //CRUD
-        internal override Role FillEntity(DbDataReader reader)
+        internal override Supplier FillEntity(DbDataReader reader)
         {
             if (reader.HasRows == false)
             {
@@ -22,7 +22,7 @@ namespace TradingCompany.DAL.Repositories.Implementations
             }
             try
             {
-                Role entity = new Role();
+                Supplier entity = new Supplier();
                 entity.Id = Convert.ToUInt64(reader["Id"]);
                 entity.Name = reader["Name"].ToString();
 
@@ -59,7 +59,7 @@ namespace TradingCompany.DAL.Repositories.Implementations
                 throw new Exception(ex.Message);
             }
         }
-        internal override List<DbParameter> GetParameters(Role entity, string prefix = "")
+        internal override List<DbParameter> GetParameters(Supplier entity, string prefix = "")
         {
             return GetParameters(EntityToFilter(entity), prefix);
         }
@@ -81,17 +81,9 @@ namespace TradingCompany.DAL.Repositories.Implementations
             }
             return valuesList;
         }
-        internal override List<string> GetEntityValues(Role entity)
+        internal override List<string> GetEntityValues(Supplier entity)
         {
             return GetFilterValues(EntityToFilter(entity));
-        }
-        internal override RoleFilter EntityToFilter(Role entity)
-        {
-            return new RoleFilter()
-            {
-                Id = entity.Id,
-                Name = entity.Name,
-            };
         }
     }
 }

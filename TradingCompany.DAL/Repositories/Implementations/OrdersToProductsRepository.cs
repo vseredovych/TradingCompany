@@ -103,15 +103,5 @@ namespace TradingCompany.DAL.Repositories.Implementations
         {
             return GetFilterValues(EntityToFilter(entity));
         }
-        internal override OrderToProductFilter EntityToFilter(OrderToProduct entity)
-        {
-            return new OrderToProductFilter()
-            {
-                //Id = entity.Id,
-                ProductId = entity.ProductId,
-                OrderId = entity.OrderId,
-                Quantity = entity.Quantity
-            };
-        }
     }
 }

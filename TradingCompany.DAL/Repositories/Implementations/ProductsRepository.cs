@@ -112,16 +112,5 @@ namespace TradingCompany.DAL.Repositories.Implementations
         {
             return GetFilterValues(EntityToFilter(entity));
         }
-        internal override ProductFilter EntityToFilter(Product entity)
-        {
-            return new ProductFilter()
-            {
-                Id = entity.Id,
-                Name = entity.Name,
-                Brand = entity.Brand,
-                ProducingCountry = entity.ProducingCountry,
-                Price = entity.Price,
-            };
-        }
     }
 }

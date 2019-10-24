@@ -7,6 +7,8 @@ using System.Data.Common;
 using System.Data;
 using TradingCompany.DAL.Models.Filters.Abstractions;
 using TradingCompany.DAL.Repository.Abstractions;
+using AutoMapper;
+using TradingCompany.DAL.Models;
 
 namespace TradingCompany.DAL.Repositories
 {
@@ -43,6 +45,10 @@ namespace TradingCompany.DAL.Repositories
             {
                 throw new Exception(ex.Message);
             }
+            finally
+            {
+                ConnectionManager.CloseConnections();
+            }
 
             return entity;
         }
@@ -69,6 +75,11 @@ namespace TradingCompany.DAL.Repositories
             {
                 throw new Exception(ex.Message);
             }
+            finally
+            {
+                ConnectionManager.CloseConnections();
+            }
+
 
             return entity;
         }
@@ -93,6 +104,11 @@ namespace TradingCompany.DAL.Repositories
             {
                 throw new Exception(ex.Message);
             }
+            finally
+            {
+                ConnectionManager.CloseConnections();
+            }
+
         }
 
         public TEntity Get(TFilter filter = default(TFilter))
@@ -136,8 +152,10 @@ namespace TradingCompany.DAL.Repositories
                     entity = FillEntity(reader);
                     entities.Add(entity);
                 }
+                ConnectionManager.CloseConnections();
                 return entities;
             }
+
         }
 
         public IEnumerable<TEntity> GetRange(TFilter filterLeft, TFilter filterRight, TFilter filter = default(TFilter))
@@ -167,6 +185,7 @@ namespace TradingCompany.DAL.Repositories
                     entity = FillEntity(reader);
                     entities.Add(entity);
                 }
+                ConnectionManager.CloseConnections();
                 return entities;
             }
         }
@@ -193,7 +212,9 @@ namespace TradingCompany.DAL.Repositories
         }
         virtual internal  TFilter EntityToFilter(TEntity entity)
         {
-            return new TFilter();
+            return ObjectsMapper.Get().Map<TEntity, TFilter>(entity);
+
+            //return new TFilter();
         }
     }
 }

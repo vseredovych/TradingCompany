@@ -121,17 +121,5 @@ namespace TradingCompany.DAL.Repositories.Implementations
         {
             return GetFilterValues(EntityToFilter(entity));
         }
-        internal override UserFilter EntityToFilter(User entity)
-        {
-            return new UserFilter()
-            {
-                Id = entity.Id,
-                FirstName = entity.FirstName,
-                LastName = entity.LastName,
-                Email = entity.Email,
-                HashPassword = entity.HashPassword,
-                RoleId = entity.RoleId
-            };
-        }
     }
 }

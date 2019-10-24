@@ -59,7 +59,7 @@ namespace TradingCompany.DAL.Core
             {
                 connection = Get().connections[kvp.Key];
 
-                if ((connection != null) && (connection.State == ConnectionState.Open))
+                if ((connection != null))
                 {
                     connectionsToClose.Add(kvp.Key);
                 }
