@@ -7,14 +7,14 @@ using System.Data.Common;
 
 namespace TradingCompany.DAL.Repositories.Implementations
 {
-    public class SuppliersRepository : BasicRepository<Supplier, SupplierFilter>
+    public class SuppToProdRepository: BasicRepository<SupplierToProduct, SupplierToProductFilter>
     {
         internal static readonly string tableName = "tblSuppliers";
 
-        public SuppliersRepository() : base(tableName) { }
+        public SuppToProdRepository() : base(tableName) { }
 
         //CRUD
-        internal override Supplier FillEntity(DbDataReader reader)
+        internal override SupplierToProduct FillEntity(DbDataReader reader)
         {
             if (reader.HasRows == false)
             {
@@ -22,10 +22,10 @@ namespace TradingCompany.DAL.Repositories.Implementations
             }
             try
             {
-                Supplier entity = new Supplier();
-                entity.Id = Convert.ToUInt64(reader["Id"]);
-                entity.Name = reader["Name"].ToString();
-
+                SupplierToProduct entity = new SupplierToProduct();
+                //entity.Id = Convert.ToUInt64(reader["Id"]);
+                entity.ProductId = Convert.ToUInt64(reader["ProductId"]);
+                entity.SupplierId = Convert.ToUInt64(reader["SupplierId"]);
                 return entity;
             }
             catch (Exception ex)
@@ -34,7 +34,7 @@ namespace TradingCompany.DAL.Repositories.Implementations
             }
         }
 
-        internal override List<DbParameter> GetParameters(SupplierFilter filter, string prefix = "")
+        internal override List<DbParameter> GetParameters(SupplierToProductFilter filter, string prefix = "")
         {
             if (filter == null)
             {
@@ -48,9 +48,13 @@ namespace TradingCompany.DAL.Repositories.Implementations
                 {
                     parameters.Add(dbManager.CreateParameter(prefix + "Id", filter.Id, DbType.Int64));
                 }
-                if (filter.Name != null)
+                if (filter.SupplierId != null)
                 {
-                    parameters.Add(dbManager.CreateParameter(prefix + "Name", 50, filter.Name, DbType.String));
+                    parameters.Add(dbManager.CreateParameter(prefix + "SupplierId", filter.SupplierId, DbType.Int64));
+                }
+                if (filter.ProductId != null)
+                {
+                    parameters.Add(dbManager.CreateParameter(prefix + "ProductId", filter.ProductId, DbType.Int64));
                 }
                 return parameters;
             }
@@ -59,11 +63,11 @@ namespace TradingCompany.DAL.Repositories.Implementations
                 throw new Exception(ex.Message);
             }
         }
-        internal override List<DbParameter> GetParameters(Supplier entity, string prefix = "")
+        internal override List<DbParameter> GetParameters(SupplierToProduct entity, string prefix = "")
         {
             return GetParameters(EntityToFilter(entity), prefix);
         }
-        internal override List<string> GetFilterValues(SupplierFilter entity)
+        internal override List<string> GetFilterValues(SupplierToProductFilter entity)
         {
             if (entity == null)
             {
@@ -75,13 +79,17 @@ namespace TradingCompany.DAL.Repositories.Implementations
             {
                 valuesList.Add("Id");
             }
-            if (entity.Name != null)
+            if (entity.ProductId != null)
             {
-                valuesList.Add("Name");
+                valuesList.Add("ProductId");
+            }
+            if (entity.SupplierId != null)
+            {
+                valuesList.Add("SupplierId");
             }
             return valuesList;
         }
-        internal override List<string> GetEntityValues(Supplier entity)
+        internal override List<string> GetEntityValues(SupplierToProduct entity)
         {
             return GetFilterValues(EntityToFilter(entity));
         }

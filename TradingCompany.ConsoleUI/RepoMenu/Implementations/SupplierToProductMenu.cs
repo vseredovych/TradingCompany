@@ -14,8 +14,8 @@ namespace TradingCompany.ConsoleUI.RepoMenu.Implementations
             Console.Write("ProductId: ");
             supplierToProduct.ProductId = Convert.ToUInt64(Console.ReadLine());
             Console.Write("SupplierId: ");
-            supplierToProduct.SupplierId = Convert.ToUInt64(Console.ReadLine())
-            return user;
+            supplierToProduct.SupplierId = Convert.ToUInt64(Console.ReadLine());
+            return supplierToProduct;
         }
     }
 }

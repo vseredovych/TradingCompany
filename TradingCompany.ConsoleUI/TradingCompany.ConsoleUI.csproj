@@ -50,9 +50,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepoMenu\BaseMenu.cs" />
     <Compile Include="RepoMenu\Abstractions\IMenu.cs" />
+    <Compile Include="RepoMenu\Implementations\OrderMenu.cs" />
+    <Compile Include="RepoMenu\Implementations\OrderToProductMenu.cs" />
+    <Compile Include="RepoMenu\Implementations\ProductMenu.cs" />
+    <Compile Include="RepoMenu\Implementations\RoleMenu.cs" />
+    <Compile Include="RepoMenu\Implementations\SupplierMenu.cs" />
+    <Compile Include="RepoMenu\Implementations\SupplierToProductMenu.cs" />
     <Compile Include="RepoMenu\Implementations\UserMenu.cs" />
     <Compile Include="UI\Menu.cs" />
-    <Compile Include="UI\MenuManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

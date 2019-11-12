@@ -19,9 +19,9 @@ namespace TradingCompany.ConsoleUI.UI
         private UserMenu userMenu;
         private SupplierToProductMenu suppToProdtMenu;
         private RoleMenu roleMenu;
-        private ProductMenu product;
-        private OrderToProductMenu orderToProduct;
-        private OrderMenu order;
+        private ProductMenu productMenu;
+        private OrderToProductMenu orderToProductMenu;
+        private OrderMenu orderMenu;
         private SupplierMenu supplierMenu;
 
         public Menu()
@@ -33,11 +33,12 @@ namespace TradingCompany.ConsoleUI.UI
         public void Initialize()
         {
             userMenu = new UserMenu();
-            suppToProdtMenu = new SupplierToProductMenu();
-            
-            roleMenu = new RoleMenu();
-            product = new ProductMenu();
             supplierMenu = new SupplierMenu();
+            suppToProdtMenu = new SupplierToProductMenu();            
+            roleMenu = new RoleMenu();
+            productMenu = new ProductMenu();
+            orderToProductMenu = new OrderToProductMenu();
+            orderMenu = new OrderMenu();
 
             this.ActionsMenuValues = new List<string>(){ "1. Create", "2. Delete", "3. Update", "4. Show", "5. Exit" };
             this.TablesMenuValues = new List<string>() { "1. User", "2. Supplier", "3. SuppliersToProducts", "4. Roles", "5. Product", "6. OrderToProduct", "7. Order", "2. Exit" };
@@ -79,6 +80,30 @@ namespace TradingCompany.ConsoleUI.UI
                         ActionsMenu(chosenTable);
                         break;
                     case ConsoleKey.D2:
+                        chosenTable = 2;
+                        ActionsMenu(chosenTable);
+                        break;
+                    case ConsoleKey.D3:
+                        chosenTable = 3;
+                        ActionsMenu(chosenTable);
+                        break;
+                    case ConsoleKey.D4:
+                        chosenTable = 4;
+                        ActionsMenu(chosenTable);
+                        break;
+                    case ConsoleKey.D5:
+                        chosenTable = 5;
+                        ActionsMenu(chosenTable);
+                        break;
+                    case ConsoleKey.D6:
+                        chosenTable = 6;
+                        ActionsMenu(chosenTable);
+                        break;
+                    case ConsoleKey.D7:
+                        chosenTable = 7;
+                        ActionsMenu(chosenTable);
+                        break;
+                    case ConsoleKey.D8:
                         chosenTable = 0;
                         action = ConsoleKey.Escape;
                         break;
@@ -143,72 +168,192 @@ namespace TradingCompany.ConsoleUI.UI
                 case 1:
                     userMenu.OutputValues();
                     Console.WriteLine("Press 'Enter' key to continue.");
-                    Console.Read();
+                    Console.ReadKey();
                     break;
                 case 2:
                     supplierMenu.OutputValues();
                     Console.WriteLine("Press 'Enter' key to continue.");
-                    Console.Read();
+                    Console.ReadKey();
                     break;
                 case 3:
-                    userMenu.OutputValues();
+                    suppToProdtMenu.OutputValues();
                     Console.WriteLine("Press 'Enter' key to continue.");
-                    Console.Read();
+                    Console.ReadKey();
                     break;
                 case 4:
-                    userMenu.OutputValues();
+                    roleMenu.OutputValues();
                     Console.WriteLine("Press 'Enter' key to continue.");
-                    Console.Read();
+                    Console.ReadKey();
                     break;
                 case 5:
-                    userMenu.OutputValues();
+                    productMenu.OutputValues();
                     Console.WriteLine("Press 'Enter' key to continue.");
-                    Console.Read();
+                    Console.ReadKey();
                     break;
                 case 6:
-                    userMenu.OutputValues();
+                    orderToProductMenu.OutputValues();
                     Console.WriteLine("Press 'Enter' key to continue.");
-                    Console.Read();
+                    Console.ReadKey();
                     break;
                 case 7:
-                    userMenu.OutputValues();
+                    orderMenu.OutputValues();
+                    Console.ReadKey();
+                    break;
+                default:
                     Console.WriteLine("Press 'Enter' key to continue.");
-                    Console.Read();
+                    Console.ReadKey();
                     break;
             }
         }
 
         private void AddEntity(int chosenTable)
         {
-            switch (chosenTable)
+            try
             {
-                case 1:
-                    userMenu.Add();
-                    break;
+                switch (chosenTable)
+                {
+                    case 1:
+                        userMenu.Add();
+                        break;
+                    case 2:
+                        supplierMenu.Add();
+                        break;
+                    case 3:
+                        suppToProdtMenu.Add();
+                        break;
+                    case 4:
+                        roleMenu.Add();
+                        break;
+                    case 5:
+                        productMenu.Add();
+                        break;
+                    case 6:
+                        orderToProductMenu.Add();
+                        break;
+                    case 7:
+                        orderMenu.Add();
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error, malinformed values.");
+                Console.WriteLine("Press 'Enter' to continue");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("Press 'Enter' to continue");
+            Console.WriteLine("done");
+            Console.ReadKey();
         }
         private void DeleteEntity(int chosenTable)
         {
             Console.Write("Id: ");
-            ulong id = Convert.ToUInt64(Console.ReadLine());
-            switch (chosenTable)
+            string strId = Console.ReadLine();
+            ulong id;
+            if (UInt64.TryParse(strId, out id))
             {
-                case 1:
-                    userMenu.Delete(id);
-                    break;
+                id = UInt64.Parse(strId);
             }
+            else
+            {
+                Console.WriteLine("Error, wrong id value.");
+                Console.WriteLine("Press 'Enter' to continue");
+                Console.ReadKey();
+                return;
+            }
+            try
+            {
+                switch (chosenTable)
+                {
+                    case 1:
+                        userMenu.Delete(id);
+                        break;
+                    case 2:
+                        supplierMenu.Delete(id);
+                        break;
+                    case 3:
+                        suppToProdtMenu.Delete(id);
+                        break;
+                    case 4:
+                        roleMenu.Delete(id);
+                        break;
+                    case 5:
+                        productMenu.Delete(id);
+                        break;
+                    case 6:
+                        orderToProductMenu.Delete(id);
+                        break;
+                    case 7:
+                        orderMenu.Delete(id);
+                        break;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error, malinformed values");
+                Console.WriteLine("Press 'Enter' to continue");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("Press 'Enter' to continue");
+            Console.WriteLine("done");
+            Console.ReadKey();
         }
         private void Update(int chosenTable)
         {
             Console.Write("Id: ");
-            ulong id = Convert.ToUInt64(Console.ReadLine());
-            switch (chosenTable)
+            string strId = Console.ReadLine();
+            ulong id;
+            if (UInt64.TryParse(strId, out id))
             {
-                case 1:
-                    userMenu.Delete(id);
-                    break;
-              
+                id = UInt64.Parse(strId);
             }
+            else
+            {
+                Console.WriteLine("Error, wrong id value.");
+                Console.WriteLine("Press 'Enter' to continue");
+                Console.ReadKey();
+                return;
+            }
+            try
+            {
+                switch (chosenTable)
+                {
+                    case 1:
+                        userMenu.Update(id);
+                        break;
+                    case 2:
+                        supplierMenu.Update(id);
+                        break;
+                    case 3:
+                        suppToProdtMenu.Update(id);
+                        break;
+                    case 4:
+                        roleMenu.Update(id);
+                        break;
+                    case 5:
+                        productMenu.Update(id);
+                        break;
+                    case 6:
+                        orderToProductMenu.Update(id);
+                        break;
+                    case 7:
+                        orderMenu.Update(id);
+                        break;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Malinformal values");
+                Console.WriteLine("Press 'Enter' to continue");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("done");
+            Console.WriteLine("Press 'Enter' to continue");
+            Console.ReadKey();
+
         }
     }
 }

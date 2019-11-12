@@ -83,7 +83,7 @@
     <Compile Include="Repositories\Implementations\ProductsRepository.cs" />
     <Compile Include="Repositories\Implementations\RolesRepository.cs" />
     <Compile Include="Repositories\Implementations\SuppiersRepository.cs" />
-    <Compile Include="Repositories\Implementations\SuppliersToProductsRepository.cs" />
+    <Compile Include="Repositories\Implementations\SuppToProdRepository.cs" />
     <Compile Include="Repositories\Implementations\UsersRepository.cs" />
   </ItemGroup>
   <ItemGroup>
