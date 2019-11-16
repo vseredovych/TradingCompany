@@ -24,7 +24,7 @@ CREATE TABLE tblUsers(
     FirstName nvarchar(50) not null,
     LastName nvarchar(50) not null,
     Email nvarchar(50) not null,
-    HashPassword nvarchar(100) not null,
+    HashPassword varchar(256) not null,
     RoleId bigint not null
 );
 

@@ -38,6 +38,7 @@ VALUES
 INSERT INTO tblUsers(FirstName, LastName, Email, HashPassword, RoleId)
 VALUES
 ('Victor', 'Seredovych', 'victor.seredovich@gmail.com', 'xHashPasswordx', 3),
+('V', 'S', 'admin', '$MYHASH$V1$10000$DULDGIaj6rpI/9s0JCmzOivZEM9wi3FK9uGJw7wy6PtJVpi+', 3),
 ('Fabian', 'Colon', 'eddellippaza-8223@yopmail.com', 'xHashPasswordx', 2),
 ('Rafael', 'Murray','0achille.binde91o@dmxs8.com', 'xHashPasswordx', 2),
 ('Connor', 'Valenzuela', '1christian.rahbes@cordlessduoclean.com', 'xHashPasswordx', 2),

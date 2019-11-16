@@ -66,7 +66,7 @@ namespace TradingCompany.DAL.Repositories.Implementations
                 }
                 if (filter.HashPassword != null)
                 {
-                    parameters.Add(dbManager.CreateParameter(prefix + "HashPassword", 50, filter.HashPassword, DbType.String));
+                    parameters.Add(dbManager.CreateParameter(prefix + "HashPassword", 256, filter.HashPassword, DbType.String));
                 }
                 if (filter.RoleId != null)
                 {

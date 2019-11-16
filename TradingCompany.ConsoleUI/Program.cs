@@ -15,7 +15,11 @@ namespace TradingCompany.ConsoleUI
         static void Main(string[] args)
         {
             //DbManager dbManager = new DbManager();
-            //MigrationManager migrationManager = new MigrationManager();
+            MigrationManager migrationManager = new MigrationManager();
+            migrationManager.DropTables();
+            migrationManager.CreateTables();
+            migrationManager.ImportStartValues();
+
 
 
             Menu menu = new Menu();

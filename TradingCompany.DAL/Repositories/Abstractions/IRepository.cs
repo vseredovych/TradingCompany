@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TradingCompany.DAL.Repository.Abstractions
+namespace TradingCompany.DAL.Repositories.Abstractions
 {
     public interface IRepository<TEntity, TFilter>
     {

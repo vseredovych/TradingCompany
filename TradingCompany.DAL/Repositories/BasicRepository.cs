@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Data;
 using TradingCompany.DAL.Models.Filters.Abstractions;
-using TradingCompany.DAL.Repository.Abstractions;
+using TradingCompany.DAL.Repositories.Abstractions;
 using AutoMapper;
 using TradingCompany.DAL.Models;
 
@@ -125,7 +125,9 @@ namespace TradingCompany.DAL.Repositories
                 }
 
                 reader.Read();
+                ConnectionManager.CloseConnections();
                 entity = FillEntity(reader);
+
 
                 return entity;
             }

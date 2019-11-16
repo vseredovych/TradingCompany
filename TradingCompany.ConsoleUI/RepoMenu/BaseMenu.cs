@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TradingCompany.ConsoleUI.Abstractions.RepoMenu;
 using TradingCompany.DAL.Models.Entities.Abstractions;
 using TradingCompany.DAL.Models.Filters.Abstractions;
-using TradingCompany.DAL.Repository.Abstractions;
+using TradingCompany.DAL.Repositories.Abstractions;
 
 namespace TradingCompany.ConsoleUI.RepoMenu
 {

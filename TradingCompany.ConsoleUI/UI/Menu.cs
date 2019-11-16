@@ -4,7 +4,7 @@ using TradingCompany.ConsoleUI.Abstractions.RepoMenu;
 using TradingCompany.ConsoleUI.RepoMenu.Implementations;
 using TradingCompany.DAL.Models.Entities.Abstractions;
 using TradingCompany.DAL.Models.Filters.Abstractions;
-using TradingCompany.DAL.Repository.Abstractions;
+using TradingCompany.DAL.Repositories.Abstractions;
 using TradingCompany.DAL.Repositories.Implementations;
 using TradingCompany.DAL.Models.Entities.Implementations;
 
