@@ -4,30 +4,46 @@ using TradingCompany.DAL.Repositories.Implementations;
 using TradingCompany.DAL.Models.Filters.Implementations;
 using TradingCompany.DAL.Models.Entities.Implementations;
 using TradingCompany.FormsUI.Menu;
+using TradingCompany.BLL.Security;
+using TradingCompany.BLL.Services.Abstractions;
+using TradingCompany.BLL;
 
 namespace TradingCompany.FormsUI.Login
 {
     public partial class LoginForm : Form
     {
-        UsersRepository Users = new UsersRepository();
-
-        public LoginForm()
+        private readonly IAuthenticationService _authenticationService;
+        private readonly IUserService _userService;
+        public LoginForm( IAuthenticationService authenticationService, IUserService userService)
         {
+            _authenticationService = authenticationService;
+            _userService = userService;
+
             InitializeComponent();
         }
 
+
         private void Button_sing_up_Click(object sender, EventArgs e)
         {
-
+            //this.Hide();
+            RegistrationForm registration = new RegistrationForm(
+                DependencyInjectorBLL.Resolve<IAuthenticationService>(), 
+                DependencyInjectorBLL.Resolve<IUserService>(),
+                DependencyInjectorBLL.Resolve<IRoleService>());
+            registration.Show();
         }
 
         private void Button_sign_in_Click(object sender, EventArgs e)
         {
-            var hash_pwd = PasswordHandler.Hash(textbox_password.Text);
-            User user = Users.Get(new UserFilter() { Email = textbox_email.Text });
+            //TODO now
+            //var hash_pwd = PasswordHandler.Hash(textbox_password.Text);
+            //User user = Users.Get(new UserFilter() { Email = textbox_email.Text });
 
-            MenuForm menu = new MenuForm();
-            this.Hide();
+            MenuForm menu = new MenuForm(
+                DependencyInjectorBLL.Resolve<IAuthenticationService>(), 
+                DependencyInjectorBLL.Resolve<IUserService>()
+                );
+            //this.Hide();
             menu.Show();
 
 

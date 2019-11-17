@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using TradingCompany.DAL.Repositories.Abstractions;
 
 namespace TradingCompany.DAL.Repositories.Implementations
 {
-    public class RolesRepository : BasicRepository<Role, RoleFilter>
+    public class RolesRepository : BasicRepository<Role, RoleFilter>, IRolesRepository
     {
         internal static readonly string tableName = "tblRoles";
 

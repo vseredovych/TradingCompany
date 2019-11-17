@@ -4,14 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using TradingCompany.DAL.Repositories.Abstractions;
 
 namespace TradingCompany.DAL.Repositories.Implementations
 {
-    public class OrderToProductsRepository : BasicRepository<OrderToProduct, OrderToProductFilter>
+    public class OrdersToProductsRepository : BasicRepository<OrderToProduct, OrderToProductFilter>, IOrdersToProductsRepository
     {
         internal static readonly string tableName = "tblOrdersToProducts";
 
-        public OrderToProductsRepository() : base(tableName) { }
+        public OrdersToProductsRepository() : base(tableName) { }
 
         //CRUD
         internal override OrderToProduct FillEntity(DbDataReader reader)

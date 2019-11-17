@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using TradingCompany.DAL.Repositories.Abstractions;
 
 namespace TradingCompany.DAL.Repositories.Implementations
 {
-    public class UsersRepository : BasicRepository<User, UserFilter>
+    public class UsersRepository : BasicRepository<User, UserFilter>, IUsersRepository
     {
         internal static readonly string tableName = "tblUsers";
 

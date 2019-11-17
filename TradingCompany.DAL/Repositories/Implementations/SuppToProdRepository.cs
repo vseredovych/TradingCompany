@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using TradingCompany.DAL.Repositories.Abstractions;
 
 namespace TradingCompany.DAL.Repositories.Implementations
 {
-    public class SuppToProdRepository: BasicRepository<SupplierToProduct, SupplierToProductFilter>
+    public class SuppToProdRepository: BasicRepository<SupplierToProduct, SupplierToProductFilter>, ISuppToProdRepository
     {
         internal static readonly string tableName = "tblSuppliers";
 

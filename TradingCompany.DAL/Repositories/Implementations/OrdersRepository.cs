@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using TradingCompany.DAL.Repositories.Abstractions;
 
 namespace TradingCompany.DAL.Repositories.Implementations
 {
-    public class OrdersRepository : BasicRepository<Order, OrderFilter>
+    public class OrdersRepository : BasicRepository<Order, OrderFilter>, IOrdersRepository
     {
         internal static readonly string tableName = "tblOrders";
 

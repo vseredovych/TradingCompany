@@ -1,8 +1,6 @@
-﻿using TradingCompany.DAL.Models.Entities.Implementations;
-
-namespace TradingCompany.BLL.DTO
+﻿namespace TradingCompany.BLL.Models
 {
-    public class UserDTO
+    public class UserRegistrationModel
     {
         public string FirstName { get; set; }
 
@@ -12,7 +10,6 @@ namespace TradingCompany.BLL.DTO
 
         public string Password { get; set; }
 
-        public Role Role { get; set; }
-
+        public string Role { get; set; }
     }
 }

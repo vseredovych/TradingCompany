@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TradingCompany.FormsUI.Login;
+using TradingCompany.BLL;
+using TradingCompany.BLL.Services.Abstractions;
 
 namespace TradingCompany.FormsUI
 {
@@ -17,7 +19,7 @@ namespace TradingCompany.FormsUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new LoginForm(DependencyInjectorBLL.Resolve<IAuthenticationService>(), DependencyInjectorBLL.Resolve<IUserService>()));
         }
     }
 }

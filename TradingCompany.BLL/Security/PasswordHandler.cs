@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradingCompany.FormsUI.Login
+namespace TradingCompany.BLL.Security
 {
     public class PasswordHandler
     {
