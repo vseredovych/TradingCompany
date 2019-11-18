@@ -6,7 +6,7 @@ using TradingCompany.DAL.Repositories.Implementations;
 
 namespace TradingCompany.ConsoleUI.RepoMenu.Implementations
 {
-    class OrderToProductMenu : BaseMenu<OrderToProductsRepository, OrderToProduct, OrderToProductFilter>
+    class OrderToProductMenu : BaseMenu<OrdersToProductsRepository, OrderToProduct, OrderToProductFilter>
     {
         protected override OrderToProduct InputValues()
         {
