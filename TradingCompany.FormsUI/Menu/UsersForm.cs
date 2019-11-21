@@ -72,5 +72,10 @@ namespace TradingCompany.FormsUI.Menu
         {
 
         }
+
+        private void Button_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

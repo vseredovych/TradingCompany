@@ -56,9 +56,10 @@
             // 
             // button_cancel
             // 
-            this.button_cancel.Location = new System.Drawing.Point(178, 306);
+            this.button_cancel.Location = new System.Drawing.Point(237, 377);
+            this.button_cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_cancel.Name = "button_cancel";
-            this.button_cancel.Size = new System.Drawing.Size(75, 23);
+            this.button_cancel.Size = new System.Drawing.Size(100, 28);
             this.button_cancel.TabIndex = 8;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
@@ -66,9 +67,10 @@
             // 
             // button_ok
             // 
-            this.button_ok.Location = new System.Drawing.Point(336, 306);
+            this.button_ok.Location = new System.Drawing.Point(448, 377);
+            this.button_ok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_ok.Name = "button_ok";
-            this.button_ok.Size = new System.Drawing.Size(75, 23);
+            this.button_ok.Size = new System.Drawing.Size(100, 28);
             this.button_ok.TabIndex = 7;
             this.button_ok.Text = "Ok";
             this.button_ok.UseVisualStyleBackColor = true;
@@ -77,61 +79,68 @@
             // label_name
             // 
             this.label_name.AutoSize = true;
-            this.label_name.Location = new System.Drawing.Point(175, 81);
+            this.label_name.Location = new System.Drawing.Point(233, 100);
+            this.label_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_name.Name = "label_name";
-            this.label_name.Size = new System.Drawing.Size(35, 13);
+            this.label_name.Size = new System.Drawing.Size(45, 17);
             this.label_name.TabIndex = 1;
             this.label_name.Text = "Name";
             // 
             // label_surname
             // 
             this.label_surname.AutoSize = true;
-            this.label_surname.Location = new System.Drawing.Point(175, 116);
+            this.label_surname.Location = new System.Drawing.Point(233, 143);
+            this.label_surname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_surname.Name = "label_surname";
-            this.label_surname.Size = new System.Drawing.Size(49, 13);
+            this.label_surname.Size = new System.Drawing.Size(65, 17);
             this.label_surname.TabIndex = 2;
             this.label_surname.Text = "Surname";
             // 
             // label_email
             // 
             this.label_email.AutoSize = true;
-            this.label_email.Location = new System.Drawing.Point(175, 146);
+            this.label_email.Location = new System.Drawing.Point(233, 180);
+            this.label_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_email.Name = "label_email";
-            this.label_email.Size = new System.Drawing.Size(32, 13);
+            this.label_email.Size = new System.Drawing.Size(42, 17);
             this.label_email.TabIndex = 3;
             this.label_email.Text = "Email";
             // 
             // label_password
             // 
             this.label_password.AutoSize = true;
-            this.label_password.Location = new System.Drawing.Point(175, 176);
+            this.label_password.Location = new System.Drawing.Point(233, 217);
+            this.label_password.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(53, 13);
+            this.label_password.Size = new System.Drawing.Size(69, 17);
             this.label_password.TabIndex = 4;
             this.label_password.Text = "Password";
             // 
             // label_verify_password
             // 
             this.label_verify_password.AutoSize = true;
-            this.label_verify_password.Location = new System.Drawing.Point(175, 210);
+            this.label_verify_password.Location = new System.Drawing.Point(233, 258);
+            this.label_verify_password.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_verify_password.Name = "label_verify_password";
-            this.label_verify_password.Size = new System.Drawing.Size(82, 13);
+            this.label_verify_password.Size = new System.Drawing.Size(109, 17);
             this.label_verify_password.TabIndex = 5;
             this.label_verify_password.Text = "Verify Password";
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // contextMenuStrip2
             // 
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.asdToolStripMenuItem,
             this.asdToolStripMenuItem1,
             this.sadaToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(99, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(110, 76);
             // 
             // asdToolStripMenuItem
             // 
@@ -139,99 +148,107 @@
             this.toolStripComboBox1,
             this.toolStripSeparator1});
             this.asdToolStripMenuItem.Name = "asdToolStripMenuItem";
-            this.asdToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.asdToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.asdToolStripMenuItem.Text = "asd";
             // 
             // toolStripComboBox1
             // 
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 28);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(192, 6);
             // 
             // asdToolStripMenuItem1
             // 
             this.asdToolStripMenuItem1.Name = "asdToolStripMenuItem1";
-            this.asdToolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
+            this.asdToolStripMenuItem1.Size = new System.Drawing.Size(109, 24);
             this.asdToolStripMenuItem1.Text = "asd";
             // 
             // sadaToolStripMenuItem
             // 
             this.sadaToolStripMenuItem.Name = "sadaToolStripMenuItem";
-            this.sadaToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.sadaToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.sadaToolStripMenuItem.Text = "sada";
             // 
             // label_role
             // 
             this.label_role.AutoSize = true;
-            this.label_role.Location = new System.Drawing.Point(175, 240);
+            this.label_role.Location = new System.Drawing.Point(233, 295);
+            this.label_role.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_role.Name = "label_role";
-            this.label_role.Size = new System.Drawing.Size(29, 13);
+            this.label_role.Size = new System.Drawing.Size(37, 17);
             this.label_role.TabIndex = 8;
             this.label_role.Text = "Role";
             // 
             // textbox_name
             // 
-            this.textbox_name.Location = new System.Drawing.Point(311, 78);
+            this.textbox_name.Location = new System.Drawing.Point(415, 96);
+            this.textbox_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textbox_name.Name = "textbox_name";
-            this.textbox_name.Size = new System.Drawing.Size(100, 20);
+            this.textbox_name.Size = new System.Drawing.Size(132, 22);
             this.textbox_name.TabIndex = 1;
             // 
             // textbox_password
             // 
-            this.textbox_password.Location = new System.Drawing.Point(311, 173);
+            this.textbox_password.Location = new System.Drawing.Point(415, 213);
+            this.textbox_password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textbox_password.Name = "textbox_password";
-            this.textbox_password.Size = new System.Drawing.Size(100, 20);
+            this.textbox_password.Size = new System.Drawing.Size(132, 22);
             this.textbox_password.TabIndex = 4;
             this.textbox_password.UseSystemPasswordChar = true;
             // 
             // textbox_email
             // 
-            this.textbox_email.Location = new System.Drawing.Point(311, 143);
+            this.textbox_email.Location = new System.Drawing.Point(415, 176);
+            this.textbox_email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textbox_email.Name = "textbox_email";
-            this.textbox_email.Size = new System.Drawing.Size(100, 20);
+            this.textbox_email.Size = new System.Drawing.Size(132, 22);
             this.textbox_email.TabIndex = 3;
             // 
             // textbox_verify_password
             // 
-            this.textbox_verify_password.Location = new System.Drawing.Point(311, 207);
+            this.textbox_verify_password.Location = new System.Drawing.Point(415, 255);
+            this.textbox_verify_password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textbox_verify_password.Name = "textbox_verify_password";
-            this.textbox_verify_password.Size = new System.Drawing.Size(100, 20);
+            this.textbox_verify_password.Size = new System.Drawing.Size(132, 22);
             this.textbox_verify_password.TabIndex = 5;
             this.textbox_verify_password.UseSystemPasswordChar = true;
             // 
             // textbox_surname
             // 
-            this.textbox_surname.Location = new System.Drawing.Point(311, 113);
+            this.textbox_surname.Location = new System.Drawing.Point(415, 139);
+            this.textbox_surname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textbox_surname.Name = "textbox_surname";
-            this.textbox_surname.Size = new System.Drawing.Size(100, 20);
+            this.textbox_surname.Size = new System.Drawing.Size(132, 22);
             this.textbox_surname.TabIndex = 2;
             // 
             // combobox_role
             // 
             this.combobox_role.FormattingEnabled = true;
-            this.combobox_role.Location = new System.Drawing.Point(311, 236);
+            this.combobox_role.Location = new System.Drawing.Point(415, 290);
+            this.combobox_role.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.combobox_role.Name = "combobox_role";
-            this.combobox_role.Size = new System.Drawing.Size(100, 21);
-            this.combobox_role.TabIndex = 9;
+            this.combobox_role.Size = new System.Drawing.Size(132, 24);
+            this.combobox_role.TabIndex = 6;
             // 
             // checkbox_pwd
             // 
             this.checkbox_pwd.AutoSize = true;
-            this.checkbox_pwd.Location = new System.Drawing.Point(428, 177);
+            this.checkbox_pwd.Location = new System.Drawing.Point(571, 218);
+            this.checkbox_pwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkbox_pwd.Name = "checkbox_pwd";
-            this.checkbox_pwd.Size = new System.Drawing.Size(15, 14);
+            this.checkbox_pwd.Size = new System.Drawing.Size(18, 17);
             this.checkbox_pwd.TabIndex = 27;
             this.checkbox_pwd.UseVisualStyleBackColor = true;
             // 
             // RegistrationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 410);
+            this.ClientSize = new System.Drawing.Size(772, 505);
             this.Controls.Add(this.checkbox_pwd);
             this.Controls.Add(this.combobox_role);
             this.Controls.Add(this.textbox_surname);
@@ -247,6 +264,7 @@
             this.Controls.Add(this.label_name);
             this.Controls.Add(this.button_ok);
             this.Controls.Add(this.button_cancel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "RegistrationForm";
             this.Text = "RegistrationForm";
             this.contextMenuStrip2.ResumeLayout(false);

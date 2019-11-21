@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button_profile = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -49,8 +50,16 @@
             this.button_products = new System.Windows.Forms.Button();
             this.button_suppliers = new System.Windows.Forms.Button();
             this.button_customers = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_recent_orders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDTOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button_profile
@@ -59,9 +68,10 @@
             this.button_profile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_profile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_profile.ForeColor = System.Drawing.Color.MediumBlue;
-            this.button_profile.Location = new System.Drawing.Point(829, 15);
+            this.button_profile.Location = new System.Drawing.Point(1105, 18);
+            this.button_profile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_profile.Name = "button_profile";
-            this.button_profile.Size = new System.Drawing.Size(75, 23);
+            this.button_profile.Size = new System.Drawing.Size(100, 28);
             this.button_profile.TabIndex = 8;
             this.button_profile.Text = "Profile";
             this.button_profile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -76,9 +86,10 @@
             this.label_clock.AutoSize = true;
             this.label_clock.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_clock.ForeColor = System.Drawing.Color.Black;
-            this.label_clock.Location = new System.Drawing.Point(11, 13);
+            this.label_clock.Location = new System.Drawing.Point(15, 16);
+            this.label_clock.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_clock.Name = "label_clock";
-            this.label_clock.Size = new System.Drawing.Size(58, 26);
+            this.label_clock.Size = new System.Drawing.Size(75, 33);
             this.label_clock.TabIndex = 10;
             this.label_clock.Text = "Clock";
             // 
@@ -88,9 +99,10 @@
             this.button_sign_out.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_sign_out.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_sign_out.ForeColor = System.Drawing.Color.MediumBlue;
-            this.button_sign_out.Location = new System.Drawing.Point(920, 13);
+            this.button_sign_out.Location = new System.Drawing.Point(1227, 16);
+            this.button_sign_out.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_sign_out.Name = "button_sign_out";
-            this.button_sign_out.Size = new System.Drawing.Size(58, 25);
+            this.button_sign_out.Size = new System.Drawing.Size(77, 31);
             this.button_sign_out.TabIndex = 11;
             this.button_sign_out.Text = "Sign Out";
             this.button_sign_out.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,9 +114,10 @@
             this.label_date.AutoSize = true;
             this.label_date.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_date.ForeColor = System.Drawing.Color.Black;
-            this.label_date.Location = new System.Drawing.Point(13, 41);
+            this.label_date.Location = new System.Drawing.Point(17, 50);
+            this.label_date.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_date.Name = "label_date";
-            this.label_date.Size = new System.Drawing.Size(41, 19);
+            this.label_date.Size = new System.Drawing.Size(50, 24);
             this.label_date.TabIndex = 12;
             this.label_date.Text = "Date";
             // 
@@ -113,9 +126,10 @@
             this.label_name.AutoSize = true;
             this.label_name.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_name.ForeColor = System.Drawing.Color.Black;
-            this.label_name.Location = new System.Drawing.Point(834, 50);
+            this.label_name.Location = new System.Drawing.Point(1112, 62);
+            this.label_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_name.Name = "label_name";
-            this.label_name.Size = new System.Drawing.Size(131, 23);
+            this.label_name.Size = new System.Drawing.Size(168, 29);
             this.label_name.TabIndex = 13;
             this.label_name.Text = "Name Surname";
             // 
@@ -131,41 +145,48 @@
             this.destinationDataGridViewTextBoxColumn,
             this.orderDateDataGridViewTextBoxColumn});
             this.datagrid_recent_orders.DataSource = this.ordersDTOBindingSource;
-            this.datagrid_recent_orders.Location = new System.Drawing.Point(320, 169);
+            this.datagrid_recent_orders.Location = new System.Drawing.Point(427, 208);
+            this.datagrid_recent_orders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.datagrid_recent_orders.Name = "datagrid_recent_orders";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datagrid_recent_orders.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.datagrid_recent_orders.Size = new System.Drawing.Size(660, 381);
-            this.datagrid_recent_orders.TabIndex = 14;
+            this.datagrid_recent_orders.RowHeadersWidth = 51;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datagrid_recent_orders.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.datagrid_recent_orders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagrid_recent_orders.Size = new System.Drawing.Size(778, 208);
+            this.datagrid_recent_orders.TabIndex = 8;
             this.datagrid_recent_orders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Datagrid_recent_orders_CellContentClick_1);
             // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 41;
+            this.idDataGridViewTextBoxColumn.Width = 48;
             // 
             // userDataGridViewTextBoxColumn
             // 
             this.userDataGridViewTextBoxColumn.DataPropertyName = "User";
             this.userDataGridViewTextBoxColumn.HeaderText = "User";
+            this.userDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.userDataGridViewTextBoxColumn.Name = "userDataGridViewTextBoxColumn";
-            this.userDataGridViewTextBoxColumn.Width = 54;
+            this.userDataGridViewTextBoxColumn.Width = 67;
             // 
             // destinationDataGridViewTextBoxColumn
             // 
             this.destinationDataGridViewTextBoxColumn.DataPropertyName = "Destination";
             this.destinationDataGridViewTextBoxColumn.HeaderText = "Destination";
+            this.destinationDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.destinationDataGridViewTextBoxColumn.Name = "destinationDataGridViewTextBoxColumn";
-            this.destinationDataGridViewTextBoxColumn.Width = 85;
+            this.destinationDataGridViewTextBoxColumn.Width = 108;
             // 
             // orderDateDataGridViewTextBoxColumn
             // 
             this.orderDateDataGridViewTextBoxColumn.DataPropertyName = "OrderDate";
             this.orderDateDataGridViewTextBoxColumn.HeaderText = "OrderDate";
+            this.orderDateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.orderDateDataGridViewTextBoxColumn.Name = "orderDateDataGridViewTextBoxColumn";
-            this.orderDateDataGridViewTextBoxColumn.Width = 81;
+            this.orderDateDataGridViewTextBoxColumn.Width = 104;
             // 
             // ordersDTOBindingSource
             // 
@@ -176,9 +197,10 @@
             this.label_recent_orders.AutoSize = true;
             this.label_recent_orders.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_recent_orders.ForeColor = System.Drawing.Color.Black;
-            this.label_recent_orders.Location = new System.Drawing.Point(316, 147);
+            this.label_recent_orders.Location = new System.Drawing.Point(421, 181);
+            this.label_recent_orders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_recent_orders.Name = "label_recent_orders";
-            this.label_recent_orders.Size = new System.Drawing.Size(102, 19);
+            this.label_recent_orders.Size = new System.Drawing.Size(128, 24);
             this.label_recent_orders.TabIndex = 15;
             this.label_recent_orders.Text = "Recent Orders";
             // 
@@ -188,10 +210,11 @@
             this.button_view_all.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_view_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_view_all.ForeColor = System.Drawing.Color.Black;
-            this.button_view_all.Location = new System.Drawing.Point(423, 146);
+            this.button_view_all.Location = new System.Drawing.Point(564, 180);
+            this.button_view_all.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_view_all.Name = "button_view_all";
-            this.button_view_all.Size = new System.Drawing.Size(75, 23);
-            this.button_view_all.TabIndex = 16;
+            this.button_view_all.Size = new System.Drawing.Size(100, 28);
+            this.button_view_all.TabIndex = 5;
             this.button_view_all.Text = "view all";
             this.button_view_all.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_view_all.UseVisualStyleBackColor = false;
@@ -202,54 +225,142 @@
             this.Label_menu.AutoSize = true;
             this.Label_menu.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_menu.ForeColor = System.Drawing.Color.Black;
-            this.Label_menu.Location = new System.Drawing.Point(12, 146);
+            this.Label_menu.Location = new System.Drawing.Point(107, 219);
+            this.Label_menu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_menu.Name = "Label_menu";
-            this.Label_menu.Size = new System.Drawing.Size(46, 19);
+            this.Label_menu.Size = new System.Drawing.Size(59, 24);
             this.Label_menu.TabIndex = 17;
             this.Label_menu.Text = "Menu";
             // 
             // buttutton_orders
             // 
-            this.buttutton_orders.Location = new System.Drawing.Point(16, 169);
+            this.buttutton_orders.Location = new System.Drawing.Point(112, 247);
+            this.buttutton_orders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttutton_orders.Name = "buttutton_orders";
-            this.buttutton_orders.Size = new System.Drawing.Size(135, 52);
-            this.buttutton_orders.TabIndex = 18;
+            this.buttutton_orders.Size = new System.Drawing.Size(180, 64);
+            this.buttutton_orders.TabIndex = 1;
             this.buttutton_orders.Text = "Orders";
             this.buttutton_orders.UseVisualStyleBackColor = true;
             // 
             // button_products
             // 
-            this.button_products.Location = new System.Drawing.Point(17, 242);
+            this.button_products.Location = new System.Drawing.Point(114, 337);
+            this.button_products.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_products.Name = "button_products";
-            this.button_products.Size = new System.Drawing.Size(134, 52);
-            this.button_products.TabIndex = 19;
+            this.button_products.Size = new System.Drawing.Size(179, 64);
+            this.button_products.TabIndex = 2;
             this.button_products.Text = "Products";
             this.button_products.UseVisualStyleBackColor = true;
             // 
             // button_suppliers
             // 
-            this.button_suppliers.Location = new System.Drawing.Point(16, 396);
+            this.button_suppliers.Location = new System.Drawing.Point(112, 526);
+            this.button_suppliers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_suppliers.Name = "button_suppliers";
-            this.button_suppliers.Size = new System.Drawing.Size(131, 52);
-            this.button_suppliers.TabIndex = 20;
+            this.button_suppliers.Size = new System.Drawing.Size(181, 64);
+            this.button_suppliers.TabIndex = 4;
             this.button_suppliers.Text = "Suppliers";
             this.button_suppliers.UseVisualStyleBackColor = true;
             // 
             // button_customers
             // 
-            this.button_customers.Location = new System.Drawing.Point(17, 320);
+            this.button_customers.Location = new System.Drawing.Point(114, 433);
+            this.button_customers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_customers.Name = "button_customers";
-            this.button_customers.Size = new System.Drawing.Size(130, 52);
-            this.button_customers.TabIndex = 21;
+            this.button_customers.Size = new System.Drawing.Size(179, 64);
+            this.button_customers.TabIndex = 3;
             this.button_customers.Text = "Customers";
             this.button_customers.UseVisualStyleBackColor = true;
             this.button_customers.Click += new System.EventHandler(this.Button_customers_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dataGridView1.DataSource = this.ordersDTOBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(425, 460);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Size = new System.Drawing.Size(778, 208);
+            this.dataGridView1.TabIndex = 22;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 48;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "User";
+            this.dataGridViewTextBoxColumn2.HeaderText = "User";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 67;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Destination";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Destination";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 108;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "OrderDate";
+            this.dataGridViewTextBoxColumn4.HeaderText = "OrderDate";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 104;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(564, 424);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "view all";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(421, 425);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 24);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Recent Orders";
+            // 
             // MenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 592);
+            this.ClientSize = new System.Drawing.Size(1323, 729);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_customers);
             this.Controls.Add(this.button_suppliers);
             this.Controls.Add(this.button_products);
@@ -263,6 +374,7 @@
             this.Controls.Add(this.button_sign_out);
             this.Controls.Add(this.label_clock);
             this.Controls.Add(this.button_profile);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MenuForm";
@@ -270,6 +382,7 @@
             this.Load += new System.EventHandler(this.MenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_recent_orders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDTOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,5 +408,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn userDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn destinationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }

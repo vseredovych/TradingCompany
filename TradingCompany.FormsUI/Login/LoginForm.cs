@@ -75,5 +75,6 @@ namespace TradingCompany.FormsUI.Login
             var form = DependencyInjectorBLL.Resolve<UserAddForm>();
             form.Show();
         }
+
     }
 }

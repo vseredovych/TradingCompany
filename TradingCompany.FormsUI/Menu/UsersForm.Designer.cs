@@ -33,24 +33,26 @@
             this.button_add_user = new System.Windows.Forms.Button();
             this.label_customers = new System.Windows.Forms.Label();
             this.datagrid_recent_orders = new System.Windows.Forms.DataGridView();
-            this.textbox_search = new System.Windows.Forms.TextBox();
-            this.label_search = new System.Windows.Forms.Label();
-            this.button_reload = new System.Windows.Forms.Button();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hashPasswordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textbox_search = new System.Windows.Forms.TextBox();
+            this.label_search = new System.Windows.Forms.Label();
+            this.button_reload = new System.Windows.Forms.Button();
+            this.button_exit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_recent_orders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button_add_user
             // 
-            this.button_add_user.Location = new System.Drawing.Point(12, 114);
+            this.button_add_user.Location = new System.Drawing.Point(16, 140);
+            this.button_add_user.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_add_user.Name = "button_add_user";
-            this.button_add_user.Size = new System.Drawing.Size(75, 23);
+            this.button_add_user.Size = new System.Drawing.Size(100, 28);
             this.button_add_user.TabIndex = 20;
             this.button_add_user.Text = "Add Customer";
             this.button_add_user.UseVisualStyleBackColor = true;
@@ -59,9 +61,10 @@
             // label_customers
             // 
             this.label_customers.AutoSize = true;
-            this.label_customers.Location = new System.Drawing.Point(130, 27);
+            this.label_customers.Location = new System.Drawing.Point(173, 33);
+            this.label_customers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_customers.Name = "label_customers";
-            this.label_customers.Size = new System.Drawing.Size(56, 13);
+            this.label_customers.Size = new System.Drawing.Size(75, 17);
             this.label_customers.TabIndex = 19;
             this.label_customers.Text = "Customers";
             // 
@@ -70,6 +73,8 @@
             this.datagrid_recent_orders.AutoGenerateColumns = false;
             this.datagrid_recent_orders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagrid_recent_orders.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.datagrid_recent_orders.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.datagrid_recent_orders.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagrid_recent_orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagrid_recent_orders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.firstNameDataGridViewTextBoxColumn,
@@ -78,67 +83,47 @@
             this.hashPasswordDataGridViewTextBoxColumn,
             this.roleDataGridViewTextBoxColumn});
             this.datagrid_recent_orders.DataSource = this.userViewModelBindingSource;
-            this.datagrid_recent_orders.Location = new System.Drawing.Point(133, 43);
+            this.datagrid_recent_orders.GridColor = System.Drawing.SystemColors.ControlText;
+            this.datagrid_recent_orders.Location = new System.Drawing.Point(177, 53);
+            this.datagrid_recent_orders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.datagrid_recent_orders.Name = "datagrid_recent_orders";
+            this.datagrid_recent_orders.RowHeadersWidth = 51;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datagrid_recent_orders.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.datagrid_recent_orders.Size = new System.Drawing.Size(896, 531);
+            this.datagrid_recent_orders.Size = new System.Drawing.Size(1079, 581);
             this.datagrid_recent_orders.TabIndex = 18;
             this.datagrid_recent_orders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Datagrid_recent_orders_CellContentClick_1);
             this.datagrid_recent_orders.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Datagrid_recent_orders_CellContentClick);
-            // 
-            // textbox_search
-            // 
-            this.textbox_search.Location = new System.Drawing.Point(12, 64);
-            this.textbox_search.Name = "textbox_search";
-            this.textbox_search.Size = new System.Drawing.Size(100, 20);
-            this.textbox_search.TabIndex = 0;
-            this.textbox_search.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Textbox_search_KeyPressed);
-            // 
-            // label_search
-            // 
-            this.label_search.AutoSize = true;
-            this.label_search.Location = new System.Drawing.Point(12, 43);
-            this.label_search.Name = "label_search";
-            this.label_search.Size = new System.Drawing.Size(41, 13);
-            this.label_search.TabIndex = 21;
-            this.label_search.Text = "Search";
-            // 
-            // button_reload
-            // 
-            this.button_reload.Location = new System.Drawing.Point(12, 152);
-            this.button_reload.Name = "button_reload";
-            this.button_reload.Size = new System.Drawing.Size(75, 23);
-            this.button_reload.TabIndex = 22;
-            this.button_reload.Text = "Reload";
-            this.button_reload.UseVisualStyleBackColor = true;
-            this.button_reload.Click += new System.EventHandler(this.Button_reload_Click);
             // 
             // firstNameDataGridViewTextBoxColumn
             // 
             this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
             this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.Width = 79;
+            this.firstNameDataGridViewTextBoxColumn.Width = 101;
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
             this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
             this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.Width = 80;
+            this.lastNameDataGridViewTextBoxColumn.Width = 101;
             // 
             // emailDataGridViewTextBoxColumn
             // 
             this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
             this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 57;
+            this.emailDataGridViewTextBoxColumn.Width = 71;
             // 
             // hashPasswordDataGridViewTextBoxColumn
             // 
             this.hashPasswordDataGridViewTextBoxColumn.DataPropertyName = "HashPassword";
             this.hashPasswordDataGridViewTextBoxColumn.HeaderText = "HashPassword";
+            this.hashPasswordDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.hashPasswordDataGridViewTextBoxColumn.Name = "hashPasswordDataGridViewTextBoxColumn";
             this.hashPasswordDataGridViewTextBoxColumn.Visible = false;
             this.hashPasswordDataGridViewTextBoxColumn.Width = 103;
@@ -147,24 +132,68 @@
             // 
             this.roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
             this.roleDataGridViewTextBoxColumn.HeaderText = "Role";
+            this.roleDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
-            this.roleDataGridViewTextBoxColumn.Width = 54;
+            this.roleDataGridViewTextBoxColumn.Width = 66;
             // 
             // userViewModelBindingSource
             // 
             this.userViewModelBindingSource.DataSource = typeof(TradingCompany.BLL.Models.UserViewModel);
             // 
+            // textbox_search
+            // 
+            this.textbox_search.Location = new System.Drawing.Point(16, 79);
+            this.textbox_search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textbox_search.Name = "textbox_search";
+            this.textbox_search.Size = new System.Drawing.Size(132, 22);
+            this.textbox_search.TabIndex = 0;
+            this.textbox_search.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Textbox_search_KeyPressed);
+            // 
+            // label_search
+            // 
+            this.label_search.AutoSize = true;
+            this.label_search.Location = new System.Drawing.Point(16, 53);
+            this.label_search.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label_search.Name = "label_search";
+            this.label_search.Size = new System.Drawing.Size(53, 17);
+            this.label_search.TabIndex = 21;
+            this.label_search.Text = "Search";
+            // 
+            // button_reload
+            // 
+            this.button_reload.Location = new System.Drawing.Point(16, 187);
+            this.button_reload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_reload.Name = "button_reload";
+            this.button_reload.Size = new System.Drawing.Size(100, 28);
+            this.button_reload.TabIndex = 22;
+            this.button_reload.Text = "Reload";
+            this.button_reload.UseVisualStyleBackColor = true;
+            this.button_reload.Click += new System.EventHandler(this.Button_reload_Click);
+            // 
+            // button_exit
+            // 
+            this.button_exit.Location = new System.Drawing.Point(16, 237);
+            this.button_exit.Margin = new System.Windows.Forms.Padding(4);
+            this.button_exit.Name = "button_exit";
+            this.button_exit.Size = new System.Drawing.Size(100, 28);
+            this.button_exit.TabIndex = 23;
+            this.button_exit.Text = "Exit";
+            this.button_exit.UseVisualStyleBackColor = true;
+            this.button_exit.Click += new System.EventHandler(this.Button_exit_Click);
+            // 
             // UsersForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 586);
+            this.ClientSize = new System.Drawing.Size(1412, 721);
+            this.Controls.Add(this.button_exit);
             this.Controls.Add(this.button_reload);
             this.Controls.Add(this.label_search);
             this.Controls.Add(this.textbox_search);
             this.Controls.Add(this.button_add_user);
             this.Controls.Add(this.label_customers);
             this.Controls.Add(this.datagrid_recent_orders);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UsersForm";
             this.Text = "UsersForm";
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_recent_orders)).EndInit();
@@ -188,5 +217,6 @@
         private System.Windows.Forms.TextBox textbox_search;
         private System.Windows.Forms.Label label_search;
         private System.Windows.Forms.Button button_reload;
+        private System.Windows.Forms.Button button_exit;
     }
 }

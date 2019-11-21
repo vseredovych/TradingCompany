@@ -36,7 +36,8 @@ namespace TradingCompany.FormsUI.Menu
             combobox_role.Items.AddRange(_roleService.GetRoleNames().ToArray());
             combobox_role.SelectedItem = _user.Role;
         }
-        private void Button_apply_Click(object sender, EventArgs e)
+
+        private void Button_ok_Click(object sender, EventArgs e)
         {
             UserViewModel user = new UserViewModel();
             if (textbox_email.Text == _user.Email || _userService.IsEmailExists(textbox_email.Text))
@@ -62,7 +63,8 @@ namespace TradingCompany.FormsUI.Menu
                         "Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-                ;}
+                    ;
+                }
             }
             else
             {
@@ -75,14 +77,59 @@ namespace TradingCompany.FormsUI.Menu
             this.Close();
         }
 
-        private void Button_ok_Click(object sender, EventArgs e)
+        private void Button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void Button_cancel_Click(object sender, EventArgs e)
+        private void Combobox_role_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Close();
+
+        }
+
+        private void Textbox_surname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Textbox_email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Textbox_name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_role_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_email_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_surname_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_name_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_apply_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_cancel_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
