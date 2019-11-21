@@ -1,6 +1,10 @@
 ﻿namespace TradingCompany.FormsUI.Menu
 {
-    partial class UserForm
+    partial class 
+        
+        
+        
+        UserEditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +34,9 @@
         {
             this.combobox_role = new System.Windows.Forms.ComboBox();
             this.textbox_surname = new System.Windows.Forms.TextBox();
-            this.textbox_verify_password = new System.Windows.Forms.TextBox();
             this.textbox_email = new System.Windows.Forms.TextBox();
-            this.textbox_password = new System.Windows.Forms.TextBox();
             this.textbox_name = new System.Windows.Forms.TextBox();
             this.label_role = new System.Windows.Forms.Label();
-            this.label_verify_password = new System.Windows.Forms.Label();
-            this.label_password = new System.Windows.Forms.Label();
             this.label_email = new System.Windows.Forms.Label();
             this.label_surname = new System.Windows.Forms.Label();
             this.label_name = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             // combobox_role
             // 
             this.combobox_role.FormattingEnabled = true;
-            this.combobox_role.Location = new System.Drawing.Point(232, 224);
+            this.combobox_role.Location = new System.Drawing.Point(232, 163);
             this.combobox_role.Name = "combobox_role";
             this.combobox_role.Size = new System.Drawing.Size(100, 21);
             this.combobox_role.TabIndex = 23;
@@ -60,28 +60,12 @@
             this.textbox_surname.Size = new System.Drawing.Size(100, 20);
             this.textbox_surname.TabIndex = 12;
             // 
-            // textbox_verify_password
-            // 
-            this.textbox_verify_password.Location = new System.Drawing.Point(232, 195);
-            this.textbox_verify_password.Name = "textbox_verify_password";
-            this.textbox_verify_password.Size = new System.Drawing.Size(100, 20);
-            this.textbox_verify_password.TabIndex = 18;
-            this.textbox_verify_password.UseSystemPasswordChar = true;
-            // 
             // textbox_email
             // 
             this.textbox_email.Location = new System.Drawing.Point(232, 131);
             this.textbox_email.Name = "textbox_email";
             this.textbox_email.Size = new System.Drawing.Size(100, 20);
             this.textbox_email.TabIndex = 14;
-            // 
-            // textbox_password
-            // 
-            this.textbox_password.Location = new System.Drawing.Point(232, 161);
-            this.textbox_password.Name = "textbox_password";
-            this.textbox_password.Size = new System.Drawing.Size(100, 20);
-            this.textbox_password.TabIndex = 16;
-            this.textbox_password.UseSystemPasswordChar = true;
             // 
             // textbox_name
             // 
@@ -93,29 +77,11 @@
             // label_role
             // 
             this.label_role.AutoSize = true;
-            this.label_role.Location = new System.Drawing.Point(96, 228);
+            this.label_role.Location = new System.Drawing.Point(96, 167);
             this.label_role.Name = "label_role";
             this.label_role.Size = new System.Drawing.Size(29, 13);
             this.label_role.TabIndex = 21;
             this.label_role.Text = "Role";
-            // 
-            // label_verify_password
-            // 
-            this.label_verify_password.AutoSize = true;
-            this.label_verify_password.Location = new System.Drawing.Point(96, 198);
-            this.label_verify_password.Name = "label_verify_password";
-            this.label_verify_password.Size = new System.Drawing.Size(82, 13);
-            this.label_verify_password.TabIndex = 19;
-            this.label_verify_password.Text = "Verify Password";
-            // 
-            // label_password
-            // 
-            this.label_password.AutoSize = true;
-            this.label_password.Location = new System.Drawing.Point(96, 164);
-            this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(53, 13);
-            this.label_password.TabIndex = 17;
-            this.label_password.Text = "Password";
             // 
             // label_email
             // 
@@ -146,7 +112,7 @@
             // 
             // button_cancel
             // 
-            this.button_cancel.Location = new System.Drawing.Point(99, 294);
+            this.button_cancel.Location = new System.Drawing.Point(75, 259);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(75, 23);
             this.button_cancel.TabIndex = 22;
@@ -155,7 +121,7 @@
             // 
             // button_apply
             // 
-            this.button_apply.Location = new System.Drawing.Point(198, 294);
+            this.button_apply.Location = new System.Drawing.Point(184, 259);
             this.button_apply.Name = "button_apply";
             this.button_apply.Size = new System.Drawing.Size(75, 23);
             this.button_apply.TabIndex = 24;
@@ -165,7 +131,7 @@
             // 
             // button_ok
             // 
-            this.button_ok.Location = new System.Drawing.Point(298, 294);
+            this.button_ok.Location = new System.Drawing.Point(285, 259);
             this.button_ok.Name = "button_ok";
             this.button_ok.Size = new System.Drawing.Size(75, 23);
             this.button_ok.TabIndex = 20;
@@ -173,27 +139,23 @@
             this.button_ok.UseVisualStyleBackColor = true;
             this.button_ok.Click += new System.EventHandler(this.Button_ok_Click);
             // 
-            // UserForm
+            // UserEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 375);
+            this.ClientSize = new System.Drawing.Size(456, 353);
             this.Controls.Add(this.button_apply);
             this.Controls.Add(this.combobox_role);
             this.Controls.Add(this.textbox_surname);
-            this.Controls.Add(this.textbox_verify_password);
             this.Controls.Add(this.textbox_email);
-            this.Controls.Add(this.textbox_password);
             this.Controls.Add(this.textbox_name);
             this.Controls.Add(this.label_role);
-            this.Controls.Add(this.label_verify_password);
-            this.Controls.Add(this.label_password);
             this.Controls.Add(this.label_email);
             this.Controls.Add(this.label_surname);
             this.Controls.Add(this.label_name);
             this.Controls.Add(this.button_ok);
             this.Controls.Add(this.button_cancel);
-            this.Name = "UserForm";
+            this.Name = "UserEditForm";
             this.Text = "UserForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -204,13 +166,9 @@
 
         private System.Windows.Forms.ComboBox combobox_role;
         private System.Windows.Forms.TextBox textbox_surname;
-        private System.Windows.Forms.TextBox textbox_verify_password;
         private System.Windows.Forms.TextBox textbox_email;
-        private System.Windows.Forms.TextBox textbox_password;
         private System.Windows.Forms.TextBox textbox_name;
         private System.Windows.Forms.Label label_role;
-        private System.Windows.Forms.Label label_verify_password;
-        private System.Windows.Forms.Label label_password;
         private System.Windows.Forms.Label label_email;
         private System.Windows.Forms.Label label_surname;
         private System.Windows.Forms.Label label_name;

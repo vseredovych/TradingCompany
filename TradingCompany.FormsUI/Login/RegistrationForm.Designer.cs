@@ -50,6 +50,7 @@
             this.textbox_verify_password = new System.Windows.Forms.TextBox();
             this.textbox_surname = new System.Windows.Forms.TextBox();
             this.combobox_role = new System.Windows.Forms.ComboBox();
+            this.checkbox_pwd = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -217,11 +218,21 @@
             this.combobox_role.Size = new System.Drawing.Size(100, 21);
             this.combobox_role.TabIndex = 9;
             // 
+            // checkbox_pwd
+            // 
+            this.checkbox_pwd.AutoSize = true;
+            this.checkbox_pwd.Location = new System.Drawing.Point(428, 177);
+            this.checkbox_pwd.Name = "checkbox_pwd";
+            this.checkbox_pwd.Size = new System.Drawing.Size(15, 14);
+            this.checkbox_pwd.TabIndex = 27;
+            this.checkbox_pwd.UseVisualStyleBackColor = true;
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 410);
+            this.Controls.Add(this.checkbox_pwd);
             this.Controls.Add(this.combobox_role);
             this.Controls.Add(this.textbox_surname);
             this.Controls.Add(this.textbox_verify_password);
@@ -266,5 +277,6 @@
         private System.Windows.Forms.TextBox textbox_verify_password;
         private System.Windows.Forms.TextBox textbox_surname;
         private System.Windows.Forms.ComboBox combobox_role;
+        private System.Windows.Forms.CheckBox checkbox_pwd;
     }
 }

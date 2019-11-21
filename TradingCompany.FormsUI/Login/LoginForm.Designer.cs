@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button_sing_up = new System.Windows.Forms.Button();
+            this.button_exit = new System.Windows.Forms.Button();
             this.button_sign_in = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textbox_email = new System.Windows.Forms.TextBox();
             this.textbox_password = new System.Windows.Forms.TextBox();
+            this.button_create_account = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button_sing_up
+            // button_exit
             // 
-            this.button_sing_up.Location = new System.Drawing.Point(233, 266);
-            this.button_sing_up.Name = "button_sing_up";
-            this.button_sing_up.Size = new System.Drawing.Size(75, 23);
-            this.button_sing_up.TabIndex = 0;
-            this.button_sing_up.Text = "sign up";
-            this.button_sing_up.UseVisualStyleBackColor = true;
-            this.button_sing_up.Click += new System.EventHandler(this.Button_sing_up_Click);
+            this.button_exit.Location = new System.Drawing.Point(254, 266);
+            this.button_exit.Name = "button_exit";
+            this.button_exit.Size = new System.Drawing.Size(75, 23);
+            this.button_exit.TabIndex = 0;
+            this.button_exit.Text = "Exit";
+            this.button_exit.UseVisualStyleBackColor = true;
+            this.button_exit.Click += new System.EventHandler(this.Button_sing_up_Click);
             // 
             // button_sign_in
             // 
-            this.button_sign_in.Location = new System.Drawing.Point(355, 266);
+            this.button_sign_in.Location = new System.Drawing.Point(367, 266);
             this.button_sign_in.Name = "button_sign_in";
             this.button_sign_in.Size = new System.Drawing.Size(75, 23);
             this.button_sign_in.TabIndex = 1;
-            this.button_sign_in.Text = "sign in";
+            this.button_sign_in.Text = "Sign In";
             this.button_sign_in.UseVisualStyleBackColor = true;
             this.button_sign_in.Click += new System.EventHandler(this.Button_sign_in_Click);
             // 
@@ -88,17 +89,33 @@
             this.textbox_password.Size = new System.Drawing.Size(127, 20);
             this.textbox_password.TabIndex = 5;
             // 
+            // button_create_account
+            // 
+            this.button_create_account.FlatAppearance.BorderSize = 0;
+            this.button_create_account.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_create_account.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_create_account.ForeColor = System.Drawing.Color.MediumBlue;
+            this.button_create_account.Location = new System.Drawing.Point(303, 295);
+            this.button_create_account.Name = "button_create_account";
+            this.button_create_account.Size = new System.Drawing.Size(92, 25);
+            this.button_create_account.TabIndex = 12;
+            this.button_create_account.Text = "Create Account]";
+            this.button_create_account.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_create_account.UseVisualStyleBackColor = false;
+            this.button_create_account.Click += new System.EventHandler(this.Button_create_account_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 417);
+            this.Controls.Add(this.button_create_account);
             this.Controls.Add(this.textbox_password);
             this.Controls.Add(this.textbox_email);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_sign_in);
-            this.Controls.Add(this.button_sing_up);
+            this.Controls.Add(this.button_exit);
             this.Name = "LoginForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -108,12 +125,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button_sing_up;
+        private System.Windows.Forms.Button button_exit;
         private System.Windows.Forms.Button button_sign_in;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textbox_email;
         private System.Windows.Forms.TextBox textbox_password;
+        private System.Windows.Forms.Button button_create_account;
     }
 }
 

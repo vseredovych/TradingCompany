@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TradingCompany.BLL.DTO;
 
 namespace TradingCompany.BLL.Services.Abstractions
 {
-    public interface IRoleService
+    public interface IProductService
     {
-        IEnumerable<string> GetRoleNames();
+        IEnumerable<ProductDTO> GetProducts();
     }
 }

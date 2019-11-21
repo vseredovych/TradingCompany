@@ -15,6 +15,10 @@ namespace TradingCompany.BLL.Mapper
                 cfg.CreateMap<UserDTO, UserViewModel>()
                     .ForMember(x => x.Role,
                                m => m.MapFrom(y => y.Role.Name));
+                cfg.CreateMap<UserViewModel, User>();
+                cfg.CreateMap<Order, OrderDTO>();
+
+
                 cfg.CreateMap<UserRegistrationModel, User>();
                 cfg.CreateMap<UserRegistrationModel, UserDTO>();
             }).CreateMapper();

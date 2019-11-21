@@ -19,7 +19,7 @@ namespace TradingCompany.FormsUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm(DependencyInjectorBLL.Resolve<IAuthenticationService>(), DependencyInjectorBLL.Resolve<IUserService>()));
+            Application.Run(DependencyInjectorBLL.Resolve<LoginForm>());
         }
     }
 }

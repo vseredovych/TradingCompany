@@ -27,6 +27,8 @@ namespace TradingCompany.BLL
                 .RegisterType<IAuthenticationService, AuthenticationService>()
                 .RegisterType<IUserService, UserService>()
                 .RegisterType<IRoleService, RoleService>()
+                .RegisterType<IProductService, ProductService>()
+                .RegisterType<IOrderService, OrderService>()
                 .RegisterInstance<IMapper>(ObjectsMapper.CreateMapper());
             //, InstanceLifetime.Singleton
         }

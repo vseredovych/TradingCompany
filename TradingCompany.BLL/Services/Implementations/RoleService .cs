@@ -22,7 +22,7 @@ namespace TradingCompany.BLL.Services.Implementations
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public List<UserViewModel> GetAllRoles()
+        public IEnumerable<UserViewModel> GetAllRoles()
         {
             //UserDTO userDTO = new UserDTO();
             List<UserViewModel> usersView = new List<UserViewModel>();
@@ -48,7 +48,7 @@ namespace TradingCompany.BLL.Services.Implementations
             //}
 
         }
-        public List<string> GetRoleNames()
+        public IEnumerable<string> GetRoleNames()
         {
             List<string> roleNames = new List<string>();
             var roles = _unitOfWork.RolesRepository.GetAll();

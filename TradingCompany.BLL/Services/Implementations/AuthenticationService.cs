@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TradingCompany.BLL.DTO;
 using TradingCompany.BLL.Services.Abstractions;
+using TradingCompany.DAL.Models.Filters.Implementations;
 using TradingCompany.DAL.UnitOfWork;
+using TradingCompany.BLL.Security;
+using TradingCompany.DAL.Models.Entities.Implementations;
 
 namespace TradingCompany.BLL.Services.Implementations
 {
@@ -15,26 +19,29 @@ namespace TradingCompany.BLL.Services.Implementations
         {
             _unitOfWork = unitOfWork;
         }
-        public void CheckCredentials(bool credentials)
+        public bool CheckCredentials(CredentialsDTO credentials)
         {
 
+            User user = _unitOfWork.UsersRepository.Get(new UserFilter() { Email = credentials.Login });
+            if (PasswordHandler.Verify(credentials.Password, user.HashPassword))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        public void UserExist(string email)
+        public bool UserExist(string email)
         {
-
+            if (_unitOfWork.UsersRepository.Get(new UserFilter() { Email = email }) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        //public Task<bool> CheckCredentials(CredentialsDTO credentials)
-        //{
-        //    return ( _unitOfWork.UsersRepository
-        //        .GetAsync(u => u.Login == credentials.Email))
-        //        .Any(u => u.PasswordHash == Hash(credentials.Password));
-        //}
-
-        //public Task<bool> UserExist(string email)
-        //{
-        //    return (_unitOfWork.UsersRepository
-        //        .GetAsync(u => u.Email == email))
-        //        .Any();
-        //}
     }
 }

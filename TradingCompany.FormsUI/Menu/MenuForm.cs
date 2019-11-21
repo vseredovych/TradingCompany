@@ -7,11 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TradingCompany.DAL.Models.Entities.Implementations;
-using TradingCompany.DAL.Models.Filters.Implementations;
-using TradingCompany.BLL.Services;
+using TradingCompany.BLL;
 using TradingCompany.BLL.DTO;
-using TradingCompany.DAL.Repositories.Implementations;
 using TradingCompany.BLL.Models;
 using TradingCompany.BLL.Services.Abstractions;
 
@@ -19,30 +16,65 @@ namespace TradingCompany.FormsUI.Menu
 {
     public partial class MenuForm : Form
     {
-        private readonly IAuthenticationService _authenticationService;
+        private readonly IOrderService _orderService;
         private readonly IUserService _userService;
-        public MenuForm(IAuthenticationService authService, IUserService userService)
+        private readonly UserDTO _user;
+        public MenuForm(IOrderService orderService, IUserService userService, UserDTO user)
         {
-            _authenticationService = authService;
-            _userService = userService;
+            _orderService = orderService;
+            _userService = _userService;
+            _user = user;
             InitializeComponent();
-            StartUp();
+            SetUpForm();
         }
-        public void StartUp()
+        private void SetUpForm()
         {
-            var users = _userService.GetAllUsers();
-            userViewModelBindingSource.DataSource = users;
+            timer1.Start();
+            ordersDTOBindingSource.DataSource = _orderService.GetOrders();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            label_name.Text = string.Format("{0} {1}",  _user.LastName, _user.FirstName );
         }
 
-        private void Datagrid_tables_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Process1_Exited(object sender, EventArgs e)
         {
-            //var ind = e.RowIndex;
-            List<UserViewModel> users = new List<UserViewModel>();
-            users = (List<UserViewModel>)userViewModelBindingSource.DataSource;
-            UserForm userForm = new UserForm(users[e.RowIndex]);
-            userForm.Show();
-            //List<User> user = (User)datagrid_tables.DataSource;
+
         }
 
+        private void MenuForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            label_clock.Text = DateTime.Now.ToString("hh:mm:ss");
+            label_date.Text = DateTime.Now.ToString("dd/MM/yyyy");
+        }
+
+
+        private void Datagrid_recent_orders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void Button_customers_Click(object sender, EventArgs e)
+        {
+            var usersForm = DependencyInjectorBLL.Resolve<UsersForm>();
+            usersForm.Show();
+        }
+
+        private void Datagrid_recent_orders_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Button_view_all_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_sign_out_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

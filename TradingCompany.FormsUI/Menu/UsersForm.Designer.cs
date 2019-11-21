@@ -1,0 +1,192 @@
+﻿namespace TradingCompany.FormsUI.Menu
+{
+    partial class UsersForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.button_add_user = new System.Windows.Forms.Button();
+            this.label_customers = new System.Windows.Forms.Label();
+            this.datagrid_recent_orders = new System.Windows.Forms.DataGridView();
+            this.textbox_search = new System.Windows.Forms.TextBox();
+            this.label_search = new System.Windows.Forms.Label();
+            this.button_reload = new System.Windows.Forms.Button();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hashPasswordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid_recent_orders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userViewModelBindingSource)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // button_add_user
+            // 
+            this.button_add_user.Location = new System.Drawing.Point(12, 114);
+            this.button_add_user.Name = "button_add_user";
+            this.button_add_user.Size = new System.Drawing.Size(75, 23);
+            this.button_add_user.TabIndex = 20;
+            this.button_add_user.Text = "Add Customer";
+            this.button_add_user.UseVisualStyleBackColor = true;
+            this.button_add_user.Click += new System.EventHandler(this.Button_add_user_Click);
+            // 
+            // label_customers
+            // 
+            this.label_customers.AutoSize = true;
+            this.label_customers.Location = new System.Drawing.Point(130, 27);
+            this.label_customers.Name = "label_customers";
+            this.label_customers.Size = new System.Drawing.Size(56, 13);
+            this.label_customers.TabIndex = 19;
+            this.label_customers.Text = "Customers";
+            // 
+            // datagrid_recent_orders
+            // 
+            this.datagrid_recent_orders.AutoGenerateColumns = false;
+            this.datagrid_recent_orders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.datagrid_recent_orders.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.datagrid_recent_orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagrid_recent_orders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.firstNameDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.hashPasswordDataGridViewTextBoxColumn,
+            this.roleDataGridViewTextBoxColumn});
+            this.datagrid_recent_orders.DataSource = this.userViewModelBindingSource;
+            this.datagrid_recent_orders.Location = new System.Drawing.Point(133, 43);
+            this.datagrid_recent_orders.Name = "datagrid_recent_orders";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datagrid_recent_orders.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.datagrid_recent_orders.Size = new System.Drawing.Size(896, 531);
+            this.datagrid_recent_orders.TabIndex = 18;
+            this.datagrid_recent_orders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Datagrid_recent_orders_CellContentClick_1);
+            this.datagrid_recent_orders.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Datagrid_recent_orders_CellContentClick);
+            // 
+            // textbox_search
+            // 
+            this.textbox_search.Location = new System.Drawing.Point(12, 64);
+            this.textbox_search.Name = "textbox_search";
+            this.textbox_search.Size = new System.Drawing.Size(100, 20);
+            this.textbox_search.TabIndex = 0;
+            this.textbox_search.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Textbox_search_KeyPressed);
+            // 
+            // label_search
+            // 
+            this.label_search.AutoSize = true;
+            this.label_search.Location = new System.Drawing.Point(12, 43);
+            this.label_search.Name = "label_search";
+            this.label_search.Size = new System.Drawing.Size(41, 13);
+            this.label_search.TabIndex = 21;
+            this.label_search.Text = "Search";
+            // 
+            // button_reload
+            // 
+            this.button_reload.Location = new System.Drawing.Point(12, 152);
+            this.button_reload.Name = "button_reload";
+            this.button_reload.Size = new System.Drawing.Size(75, 23);
+            this.button_reload.TabIndex = 22;
+            this.button_reload.Text = "Reload";
+            this.button_reload.UseVisualStyleBackColor = true;
+            this.button_reload.Click += new System.EventHandler(this.Button_reload_Click);
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.Width = 79;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.Width = 57;
+            // 
+            // hashPasswordDataGridViewTextBoxColumn
+            // 
+            this.hashPasswordDataGridViewTextBoxColumn.DataPropertyName = "HashPassword";
+            this.hashPasswordDataGridViewTextBoxColumn.HeaderText = "HashPassword";
+            this.hashPasswordDataGridViewTextBoxColumn.Name = "hashPasswordDataGridViewTextBoxColumn";
+            this.hashPasswordDataGridViewTextBoxColumn.Visible = false;
+            this.hashPasswordDataGridViewTextBoxColumn.Width = 103;
+            // 
+            // roleDataGridViewTextBoxColumn
+            // 
+            this.roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
+            this.roleDataGridViewTextBoxColumn.HeaderText = "Role";
+            this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
+            this.roleDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // userViewModelBindingSource
+            // 
+            this.userViewModelBindingSource.DataSource = typeof(TradingCompany.BLL.Models.UserViewModel);
+            // 
+            // UsersForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1059, 586);
+            this.Controls.Add(this.button_reload);
+            this.Controls.Add(this.label_search);
+            this.Controls.Add(this.textbox_search);
+            this.Controls.Add(this.button_add_user);
+            this.Controls.Add(this.label_customers);
+            this.Controls.Add(this.datagrid_recent_orders);
+            this.Name = "UsersForm";
+            this.Text = "UsersForm";
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid_recent_orders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userViewModelBindingSource)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button button_add_user;
+        private System.Windows.Forms.Label label_customers;
+        private System.Windows.Forms.DataGridView datagrid_recent_orders;
+        private System.Windows.Forms.BindingSource userViewModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hashPasswordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox textbox_search;
+        private System.Windows.Forms.Label label_search;
+        private System.Windows.Forms.Button button_reload;
+    }
+}

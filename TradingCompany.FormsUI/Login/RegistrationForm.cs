@@ -6,6 +6,7 @@ using TradingCompany.DAL.Repositories.Implementations;
 using TradingCompany.DAL.Models.Filters.Implementations;
 using TradingCompany.BLL.Models;
 using TradingCompany.BLL.Services.Abstractions;
+using System.Linq;
 
 namespace TradingCompany.FormsUI.Login
 {
@@ -34,26 +35,26 @@ namespace TradingCompany.FormsUI.Login
 
         private void Button_ok_Click(object sender, EventArgs e)
         {
-            UserRegistrationModel model = new UserRegistrationModel();
-            if (textbox_password.Text == textbox_verify_password.Text)
-            {
-                model.Password = textbox_email.Text;
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Passwords are not match!",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
-            //TODO Validation parameters
-            model.FirstName = textbox_name.Text;
-            model.LastName = textbox_surname.Text;
-            model.Email = textbox_email.Text;
-            model.Role = combobox_role.SelectedItem.ToString();
-            _userService.CreateUser(model);
+            //UserRegistrationModel model = new UserRegistrationModel();
+            //if (textbox_password.Text == textbox_verify_password.Text)
+            //{
+            //    model.Password = textbox_email.Text;
+            //}
+            //else
+            //{
+            //    MessageBox.Show(
+            //        "Passwords are not match!",
+            //        "Error",
+            //        MessageBoxButtons.OK,
+            //        MessageBoxIcon.Error);
+            //    return;
+            //}
+            ////TODO Validation parameters
+            //model.FirstName = textbox_name.Text;
+            //model.LastName = textbox_surname.Text;
+            //model.Email = textbox_email.Text;
+            //model.Role = combobox_role.SelectedItem.ToString();
+            //_userService.CreateUser(model);
         }
     }
 }

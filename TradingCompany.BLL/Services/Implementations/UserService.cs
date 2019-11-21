@@ -1,14 +1,14 @@
-﻿using TradingCompany.BLL.DTO;
-using TradingCompany.DAL.Repositories.Implementations;
-using TradingCompany.DAL.Models.Entities.Implementations;
-using TradingCompany.DAL.Models.Filters.Implementations;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
-using AutoMapper;
 using System.Linq;
+using TradingCompany.BLL.DTO;
 using TradingCompany.BLL.Models;
 using TradingCompany.BLL.Security;
-using TradingCompany.DAL.UnitOfWork;
 using TradingCompany.BLL.Services.Abstractions;
+using TradingCompany.DAL.Models.Entities.Implementations;
+using TradingCompany.DAL.Models.Filters.Implementations;
+using TradingCompany.DAL.UnitOfWork;
 
 namespace TradingCompany.BLL.Services.Implementations
 {
@@ -22,34 +22,76 @@ namespace TradingCompany.BLL.Services.Implementations
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        //public UserService() : this(new ObjectsMapper().Get()) {}
-        public List<UserViewModel> GetAllUsers()
+        public IEnumerable<UserViewModel> GetViewModels()
         {
-            //UserDTO userDTO = new UserDTO();
-            List<UserViewModel> usersView = new List<UserViewModel>();
-            List<UserDTO> usersDTO = new List<UserDTO>();
-            List<User> users = _unitOfWork.UsersRepository.GetAll().ToList();
-
-            foreach ( User user in users)
-            {
-                UserDTO userDTO = _mapper.Map<User, UserDTO>(user);
-                userDTO.Role = _unitOfWork.RolesRepository.Get(new RoleFilter() { Id = user.RoleId }) ;
-                usersDTO.Add(userDTO);
-                usersView.Add(_mapper.Map<UserDTO, UserViewModel>(userDTO));
-            }
-
+            IEnumerable<UserDTO> usersDTO = this.GetAll();
+            var usersView = usersDTO.ToList().ConvertAll(x => _mapper.Map<UserDTO, UserViewModel>(x));
             return usersView;
         }
-        public void CreateUser(UserRegistrationModel model)
+        public IEnumerable<UserDTO> GetAll()
         {
-            if (_unitOfWork.UsersRepository.Get(new UserFilter() { Email = model.Email }) == null)
-            { 
-                User user = _mapper.Map<UserRegistrationModel, User>(model);
-                user.HashPassword = PasswordHandler.Hash(model.Password);
+            List<UserDTO> usersDTO = new List<UserDTO>();
+            foreach(var user in _unitOfWork.UsersRepository.GetAll())
+            {
+                UserDTO userDTO = _mapper.Map<User, UserDTO>(user);
+                userDTO.Role = _unitOfWork.RolesRepository.Get(new RoleFilter() { Id = user.RoleId });
+                usersDTO.Add(userDTO);
+            }
+            return usersDTO;
+        }
+        public UserDTO GetById(ulong id)
+        {
+            User user = _unitOfWork.UsersRepository.Get(new UserFilter() { Id = id });
+            UserDTO userDTO = _mapper.Map<User, UserDTO>(user);
+            return userDTO;
+        }
+        public UserDTO GetByEmail(string email)
+        {
+            User user = _unitOfWork.UsersRepository.Get(new UserFilter() { Email = email });
+            UserDTO userDTO = _mapper.Map<User, UserDTO>(user);
+            return userDTO;
+        }
+        public bool CreateUser(UserViewModel model)
+        {
+            try
+            {
+                User user = _mapper.Map<UserViewModel, User>(model);
                 user.RoleId = _unitOfWork.RolesRepository.Get(new RoleFilter() { Name = model.Role }).Id;
                 _unitOfWork.UsersRepository.Create(user);
             }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool UpdateUser(UserViewModel model)
+        {
+            try
+            {
 
+                User user = _mapper.Map<UserViewModel, User>(model);
+                user.RoleId = _unitOfWork.RolesRepository.Get(new RoleFilter() { Name = model.Role }).Id;
+                _unitOfWork.UsersRepository.Update(user, new UserFilter() { Id = user.Id});
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+        public string GetHashedPassword(string password)
+        {
+            return PasswordHandler.Hash(password);
+        }
+
+        public bool IsEmailExists(string email)
+        {
+            if (_unitOfWork.UsersRepository.Get(new UserFilter() { Email = email}) != null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

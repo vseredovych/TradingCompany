@@ -8,6 +8,8 @@ namespace TradingCompany.BLL.Models
 {
     public class UserViewModel
     {
+        public ulong Id { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

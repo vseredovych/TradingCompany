@@ -7,6 +7,8 @@ using TradingCompany.FormsUI.Menu;
 using TradingCompany.BLL.Security;
 using TradingCompany.BLL.Services.Abstractions;
 using TradingCompany.BLL;
+using TradingCompany.BLL.DTO;
+using Unity.Resolution;
 
 namespace TradingCompany.FormsUI.Login
 {
@@ -20,41 +22,58 @@ namespace TradingCompany.FormsUI.Login
             _userService = userService;
 
             InitializeComponent();
+            SetUpForm();
+        }
+        private void SetUpForm()
+        {
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
 
 
         private void Button_sing_up_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            RegistrationForm registration = new RegistrationForm(
-                DependencyInjectorBLL.Resolve<IAuthenticationService>(), 
-                DependencyInjectorBLL.Resolve<IUserService>(),
-                DependencyInjectorBLL.Resolve<IRoleService>());
-            registration.Show();
+            this.Close();
         }
 
         private void Button_sign_in_Click(object sender, EventArgs e)
         {
-            //TODO now
-            //var hash_pwd = PasswordHandler.Hash(textbox_password.Text);
-            //User user = Users.Get(new UserFilter() { Email = textbox_email.Text });
+            CredentialsDTO credentials = new CredentialsDTO() {
+                Login = textbox_email.Text,
+                Password = textbox_password.Text
+            };
 
-            MenuForm menu = new MenuForm(
-                DependencyInjectorBLL.Resolve<IAuthenticationService>(), 
-                DependencyInjectorBLL.Resolve<IUserService>()
-                );
-            //this.Hide();
-            menu.Show();
+            if (_authenticationService.UserExist(textbox_email.Text))
+            {
+                if (_authenticationService.CheckCredentials(credentials))
+                {
+                    MenuForm menu = DependencyInjectorBLL.Resolve<MenuForm>(
+                        new ParameterOverride("user", _userService.GetByEmail(credentials.Login)));
+                    menu.Show();
+                }
+                else
+                {
+                    MessageBox.Show(
+                       "Wrong password!",
+                       "Error",
+                       MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(
+                   "There is no such user!",
+                   "Error",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+            }
+        }
 
-
-            //if (user != null && PasswordHandler.Verify(textbox_password.Text, user.HashPassword))
-            //{
-            //    MenuForm menu = new MenuForm();
-            //    this.Hide();
-            //    menu.Show();
-            //}
-            ////button_sign_in.Text
-            //textbox_email.Text = "email";
+        private void Button_create_account_Click(object sender, EventArgs e)
+        {
+            var form = DependencyInjectorBLL.Resolve<UserAddForm>();
+            form.Show();
         }
     }
 }
