@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingCompany.FormsUI", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradingCompany.BLL", "TradingCompany.BLL\TradingCompany.BLL.csproj", "{55B926C3-81BE-4E25-BF7B-85E8CB403374}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFUI", "WPFUI\WPFUI.csproj", "{83C3114F-8117-4A16-9C70-36EF0D078623}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{55B926C3-81BE-4E25-BF7B-85E8CB403374}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B926C3-81BE-4E25-BF7B-85E8CB403374}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B926C3-81BE-4E25-BF7B-85E8CB403374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C3114F-8117-4A16-9C70-36EF0D078623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C3114F-8117-4A16-9C70-36EF0D078623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C3114F-8117-4A16-9C70-36EF0D078623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C3114F-8117-4A16-9C70-36EF0D078623}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
