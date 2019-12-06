@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TradingCompany.BLL.Models
 {
-    class OrderViewModel
+    public class OrderViewModel
     {
         public ulong Id { get; set; }
 

@@ -54,7 +54,7 @@ namespace TradingCompany.FormsUI.Login
             //model.LastName = textbox_surname.Text;
             //model.Email = textbox_email.Text;
             //model.Role = combobox_role.SelectedItem.ToString();
-            //_userService.CreateUser(model);
+            //_userService.Create(model);
         }
     }
 }

@@ -45,13 +45,7 @@ namespace TradingCompany.BLL.Services.Implementations
             UserDTO userDTO = _mapper.Map<User, UserDTO>(user);
             return userDTO;
         }
-        public UserDTO GetByEmail(string email)
-        {
-            User user = _unitOfWork.UsersRepository.Get(new UserFilter() { Email = email });
-            UserDTO userDTO = _mapper.Map<User, UserDTO>(user);
-            return userDTO;
-        }
-        public bool CreateUser(UserViewModel model)
+        public bool Create(UserViewModel model)
         {
             try
             {
@@ -65,7 +59,7 @@ namespace TradingCompany.BLL.Services.Implementations
             }
             return true;
         }
-        public bool UpdateUser(UserViewModel model)
+        public bool Update(UserViewModel model)
         {
             try
             {
@@ -74,11 +68,29 @@ namespace TradingCompany.BLL.Services.Implementations
                 user.RoleId = _unitOfWork.RolesRepository.Get(new RoleFilter() { Name = model.Role }).Id;
                 _unitOfWork.UsersRepository.Update(user, new UserFilter() { Id = user.Id});
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
             return true;
+        }
+        public bool Delete(ulong id)
+        {
+            try
+            { 
+                _unitOfWork.UsersRepository.Delete(new UserFilter() { Id = id });
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+        public UserDTO GetByEmail(string email)
+        {
+            User user = _unitOfWork.UsersRepository.Get(new UserFilter() { Email = email });
+            UserDTO userDTO = _mapper.Map<User, UserDTO>(user);
+            return userDTO;
         }
         public string GetHashedPassword(string password)
         {
@@ -92,6 +104,16 @@ namespace TradingCompany.BLL.Services.Implementations
                 return false;
             }
             return true;
+        }
+        public IEnumerable<string> GetUserNames()
+        {
+            List<string> userNames = new List<string>();
+            var users = _unitOfWork.UsersRepository.GetAll();
+            foreach (User user in users)
+            {
+                userNames.Add(user.Email);
+            }
+            return userNames;
         }
     }
 }

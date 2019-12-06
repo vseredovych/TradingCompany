@@ -13,10 +13,12 @@ namespace TradingCompany.BLL.Services.Abstractions
         IEnumerable<UserDTO> GetAll();
         UserDTO GetById(ulong id);
         UserDTO GetByEmail(string email);
+        bool Create(UserViewModel model);
+        bool Update(UserViewModel model);
+        bool Delete(ulong id);
         IEnumerable<UserViewModel> GetViewModels();
         bool IsEmailExists(string email);
         string GetHashedPassword(string password);
-        bool CreateUser(UserViewModel model);
-        bool UpdateUser(UserViewModel model);
+        IEnumerable<string> GetUserNames();
     }
 }

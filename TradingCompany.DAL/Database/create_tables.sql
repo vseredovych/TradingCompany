@@ -75,6 +75,7 @@ ALTER TABLE tblOrdersToProducts
 
 
 CREATE TABLE tblSuppliersToProducts(
+    Id bigint not null IDENTITY(1,1) PRIMARY KEY,
     SupplierId bigint not null,
     ProductId bigint not null 
 );

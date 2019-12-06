@@ -74,11 +74,35 @@
     <Compile Include="Menu\MenuForm.Designer.cs">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu\OrdersForm.cs">
+    <Compile Include="Menu\OrderAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu\OrdersForm.Designer.cs">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
+    <Compile Include="Menu\OrderAddForm.Designer.cs">
+      <DependentUpon>OrderAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\OrderEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\OrderEditForm.Designer.cs">
+      <DependentUpon>OrderEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\OrdersManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\OrdersManagerForm.Designer.cs">
+      <DependentUpon>OrdersManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\SupProdAddFformcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\SupProdAddFformcs.Designer.cs">
+      <DependentUpon>SupProdAddFformcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\SupProdEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\SupProdEditForm.Designer.cs">
+      <DependentUpon>SupProdEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu\UserAddForm.cs">
       <SubType>Form</SubType>
@@ -109,8 +133,17 @@
     <EmbeddedResource Include="Menu\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu\OrdersForm.resx">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
+    <EmbeddedResource Include="Menu\OrderAddForm.resx">
+      <DependentUpon>OrderAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\OrderEditForm.resx">
+      <DependentUpon>OrderEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\OrdersManagerForm.resx">
+      <DependentUpon>OrdersManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\SupProdAddFformcs.resx">
+      <DependentUpon>SupProdAddFformcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
@@ -131,18 +164,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\TradingCompany.BLL.DTO.OrdersDTO.datasource" />
+    <None Include="Properties\DataSources\TradingCompany.BLL.DependencyInjectorBLL.datasource" />
+    <None Include="Properties\DataSources\TradingCompany.BLL.DTO.CredentialsDTO.datasource" />
+    <None Include="Properties\DataSources\TradingCompany.BLL.DTO.OrderDTO.datasource" />
+    <None Include="Properties\DataSources\TradingCompany.BLL.DTO.ProductDTO.datasource" />
+    <None Include="Properties\DataSources\TradingCompany.BLL.DTO.SupplierDTO.datasource" />
     <None Include="Properties\DataSources\TradingCompany.BLL.DTO.UserDTO.datasource" />
-    <None Include="Properties\DataSources\TradingCompany.BLL.Mapper.ObjectsMapper.datasource" />
+    <None Include="Properties\DataSources\TradingCompany.BLL.Models.OrderViewModel.datasource" />
+    <None Include="Properties\DataSources\TradingCompany.BLL.Models.SuppToProdViewModel.datasource" />
+    <None Include="Properties\DataSources\TradingCompany.BLL.Models.UserRegistrationModel.datasource" />
     <None Include="Properties\DataSources\TradingCompany.BLL.Models.UserViewModel.datasource" />
-    <None Include="Properties\DataSources\TradingCompany.BLL.Services.UserService.datasource" />
-    <None Include="Properties\DataSources\TradingCompany.DAL.Models.Entities.Implementations.Order.datasource" />
-    <None Include="Properties\DataSources\TradingCompany.DAL.Models.Entities.Implementations.OrderToProduct.datasource" />
-    <None Include="Properties\DataSources\TradingCompany.DAL.Models.Entities.Implementations.Product.datasource" />
-    <None Include="Properties\DataSources\TradingCompany.DAL.Models.Entities.Implementations.Role.datasource" />
-    <None Include="Properties\DataSources\TradingCompany.DAL.Models.Entities.Implementations.Supplier.datasource" />
-    <None Include="Properties\DataSources\TradingCompany.DAL.Models.Entities.Implementations.SupplierToProduct.datasource" />
-    <None Include="Properties\DataSources\TradingCompany.DAL.Models.Entities.Implementations.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

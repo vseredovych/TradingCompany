@@ -89,6 +89,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderListViewModel.cs" />
     <Compile Include="OrdersMenu.xaml.cs">
       <DependentUpon>OrdersMenu.xaml</DependentUpon>
     </Compile>

@@ -46,7 +46,7 @@ namespace TradingCompany.FormsUI.Menu
                     user.Email = textbox_email.Text;
                     user.HashPassword = _userService.GetHashedPassword(textbox_password.Text);
                     user.Role = combobox_role.SelectedItem.ToString();
-                    _userService.CreateUser(user);
+                    _userService.Create(user);
                     MessageBox.Show(
                         "User was added successully!",
                         "OK",
@@ -93,6 +93,66 @@ namespace TradingCompany.FormsUI.Menu
             textbox_password.UseSystemPasswordChar = true;
             textbox_verify_password.UseSystemPasswordChar = true;
             return;
+        }
+
+        private void Textbox_surname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Textbox_email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Textbox_name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_role_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_email_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_surname_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_name_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Combobox_role_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Textbox_password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Textbox_verify_password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_password_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label_verify_password_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

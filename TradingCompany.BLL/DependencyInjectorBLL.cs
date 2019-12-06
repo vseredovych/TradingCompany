@@ -29,6 +29,8 @@ namespace TradingCompany.BLL
                 .RegisterType<IRoleService, RoleService>()
                 .RegisterType<IProductService, ProductService>()
                 .RegisterType<IOrderService, OrderService>()
+                .RegisterType<ISupplierService, SupplierService>()
+                .RegisterType<ISuppToProdService, SuppToProdService>()
                 .RegisterInstance<IMapper>(ObjectsMapper.CreateMapper());
             //, InstanceLifetime.Singleton
         }

@@ -20,17 +20,7 @@ namespace WPFUI
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        private readonly IAuthenticationService _authenticationService;
-        private readonly IUserService _userService;
-
-        public MainWindow(IAuthenticationService authenticationService, IUserService userService)
-        {
-            _authenticationService = authenticationService;
-            _userService = userService;
-
-            InitializeComponent();
+    public partial class MainWindow : ent();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)

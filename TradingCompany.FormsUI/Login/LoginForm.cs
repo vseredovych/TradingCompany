@@ -50,6 +50,7 @@ namespace TradingCompany.FormsUI.Login
                     MenuForm menu = DependencyInjectorBLL.Resolve<MenuForm>(
                         new ParameterOverride("user", _userService.GetByEmail(credentials.Login)));
                     menu.Show();
+                    this.Hide();
                 }
                 else
                 {

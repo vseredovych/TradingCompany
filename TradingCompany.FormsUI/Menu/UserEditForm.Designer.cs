@@ -53,7 +53,6 @@
             this.combobox_role.Name = "combobox_role";
             this.combobox_role.Size = new System.Drawing.Size(132, 24);
             this.combobox_role.TabIndex = 23;
-            this.combobox_role.SelectedIndexChanged += new System.EventHandler(this.Combobox_role_SelectedIndexChanged);
             // 
             // textbox_surname
             // 
@@ -62,7 +61,6 @@
             this.textbox_surname.Name = "textbox_surname";
             this.textbox_surname.Size = new System.Drawing.Size(132, 22);
             this.textbox_surname.TabIndex = 12;
-            this.textbox_surname.TextChanged += new System.EventHandler(this.Textbox_surname_TextChanged);
             // 
             // textbox_email
             // 
@@ -71,7 +69,6 @@
             this.textbox_email.Name = "textbox_email";
             this.textbox_email.Size = new System.Drawing.Size(132, 22);
             this.textbox_email.TabIndex = 14;
-            this.textbox_email.TextChanged += new System.EventHandler(this.Textbox_email_TextChanged);
             // 
             // textbox_name
             // 
@@ -80,7 +77,6 @@
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.Size = new System.Drawing.Size(132, 22);
             this.textbox_name.TabIndex = 10;
-            this.textbox_name.TextChanged += new System.EventHandler(this.Textbox_name_TextChanged);
             // 
             // label_role
             // 
@@ -91,7 +87,7 @@
             this.label_role.Size = new System.Drawing.Size(37, 17);
             this.label_role.TabIndex = 21;
             this.label_role.Text = "Role";
-            this.label_role.Click += new System.EventHandler(this.Label_role_Click);
+
             // 
             // label_email
             // 
@@ -102,7 +98,6 @@
             this.label_email.Size = new System.Drawing.Size(42, 17);
             this.label_email.TabIndex = 15;
             this.label_email.Text = "Email";
-            this.label_email.Click += new System.EventHandler(this.Label_email_Click);
             // 
             // label_surname
             // 
@@ -113,7 +108,6 @@
             this.label_surname.Size = new System.Drawing.Size(65, 17);
             this.label_surname.TabIndex = 13;
             this.label_surname.Text = "Surname";
-            this.label_surname.Click += new System.EventHandler(this.Label_surname_Click);
             // 
             // label_name
             // 
@@ -124,7 +118,6 @@
             this.label_name.Size = new System.Drawing.Size(45, 17);
             this.label_name.TabIndex = 11;
             this.label_name.Text = "Name";
-            this.label_name.Click += new System.EventHandler(this.Label_name_Click);
             // 
             // button_cancel
             // 
@@ -135,7 +128,6 @@
             this.button_cancel.TabIndex = 22;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
-            this.button_cancel.Click += new System.EventHandler(this.Button_cancel_Click_1);
             // 
             // button_apply
             // 
@@ -146,7 +138,6 @@
             this.button_apply.TabIndex = 24;
             this.button_apply.Text = "Apply";
             this.button_apply.UseVisualStyleBackColor = true;
-            this.button_apply.Click += new System.EventHandler(this.Button_apply_Click);
             // 
             // button_ok
             // 

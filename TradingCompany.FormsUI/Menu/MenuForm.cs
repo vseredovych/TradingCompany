@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TradingCompany.BLL;
 using TradingCompany.BLL.DTO;
-using TradingCompany.BLL.Models;
 using TradingCompany.BLL.Services.Abstractions;
 
 namespace TradingCompany.FormsUI.Menu
@@ -30,10 +22,10 @@ namespace TradingCompany.FormsUI.Menu
         private void SetUpForm()
         {
             timer1.Start();
-            ordersDTOBindingSource.DataSource = _orderService.GetOrders();
+            ordersDTOBindingSource.DataSource = _orderService.GetViewModels();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            label_name.Text = string.Format("{0} {1}",  _user.LastName, _user.FirstName );
+            label_name.Text = string.Format("{0} {1}", _user.LastName, _user.FirstName);
         }
 
         private void Process1_Exited(object sender, EventArgs e)
@@ -75,6 +67,12 @@ namespace TradingCompany.FormsUI.Menu
         private void Button_sign_out_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Buttutton_orders_Click(object sender, EventArgs e)
+        {
+            var usersForm = DependencyInjectorBLL.Resolve<OrdersManagerForm>();
+            usersForm.Show();
         }
     }
 }

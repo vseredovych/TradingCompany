@@ -52,6 +52,7 @@
             this.combobox_role.Name = "combobox_role";
             this.combobox_role.Size = new System.Drawing.Size(100, 21);
             this.combobox_role.TabIndex = 34;
+            this.combobox_role.SelectedIndexChanged += new System.EventHandler(this.Combobox_role_SelectedIndexChanged);
             // 
             // textbox_surname
             // 
@@ -59,6 +60,7 @@
             this.textbox_surname.Name = "textbox_surname";
             this.textbox_surname.Size = new System.Drawing.Size(100, 20);
             this.textbox_surname.TabIndex = 27;
+            this.textbox_surname.TextChanged += new System.EventHandler(this.Textbox_surname_TextChanged);
             // 
             // textbox_email
             // 
@@ -66,6 +68,7 @@
             this.textbox_email.Name = "textbox_email";
             this.textbox_email.Size = new System.Drawing.Size(100, 20);
             this.textbox_email.TabIndex = 29;
+            this.textbox_email.TextChanged += new System.EventHandler(this.Textbox_email_TextChanged);
             // 
             // textbox_name
             // 
@@ -73,6 +76,7 @@
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.Size = new System.Drawing.Size(100, 20);
             this.textbox_name.TabIndex = 25;
+            this.textbox_name.TextChanged += new System.EventHandler(this.Textbox_name_TextChanged);
             // 
             // label_role
             // 
@@ -82,6 +86,7 @@
             this.label_role.Size = new System.Drawing.Size(29, 13);
             this.label_role.TabIndex = 32;
             this.label_role.Text = "Role";
+            this.label_role.Click += new System.EventHandler(this.Label_role_Click);
             // 
             // label_email
             // 
@@ -91,6 +96,7 @@
             this.label_email.Size = new System.Drawing.Size(32, 13);
             this.label_email.TabIndex = 30;
             this.label_email.Text = "Email";
+            this.label_email.Click += new System.EventHandler(this.Label_email_Click);
             // 
             // label_surname
             // 
@@ -100,6 +106,7 @@
             this.label_surname.Size = new System.Drawing.Size(49, 13);
             this.label_surname.TabIndex = 28;
             this.label_surname.Text = "Surname";
+            this.label_surname.Click += new System.EventHandler(this.Label_surname_Click);
             // 
             // label_name
             // 
@@ -109,6 +116,7 @@
             this.label_name.Size = new System.Drawing.Size(35, 13);
             this.label_name.TabIndex = 26;
             this.label_name.Text = "Name";
+            this.label_name.Click += new System.EventHandler(this.Label_name_Click);
             // 
             // button_ok
             // 
@@ -137,6 +145,7 @@
             this.textbox_password.Size = new System.Drawing.Size(100, 20);
             this.textbox_password.TabIndex = 35;
             this.textbox_password.UseSystemPasswordChar = true;
+            this.textbox_password.TextChanged += new System.EventHandler(this.Textbox_password_TextChanged);
             // 
             // textbox_verify_password
             // 
@@ -145,6 +154,7 @@
             this.textbox_verify_password.Size = new System.Drawing.Size(100, 20);
             this.textbox_verify_password.TabIndex = 36;
             this.textbox_verify_password.UseSystemPasswordChar = true;
+            this.textbox_verify_password.TextChanged += new System.EventHandler(this.Textbox_verify_password_TextChanged);
             // 
             // label_password
             // 
@@ -154,6 +164,7 @@
             this.label_password.Size = new System.Drawing.Size(53, 13);
             this.label_password.TabIndex = 37;
             this.label_password.Text = "Password";
+            this.label_password.Click += new System.EventHandler(this.Label_password_Click);
             // 
             // label_verify_password
             // 
@@ -163,6 +174,7 @@
             this.label_verify_password.Size = new System.Drawing.Size(82, 13);
             this.label_verify_password.TabIndex = 38;
             this.label_verify_password.Text = "Verify Password";
+            this.label_verify_password.Click += new System.EventHandler(this.Label_verify_password_Click);
             // 
             // checkbox_pwd
             // 

@@ -99,7 +99,7 @@ namespace TradingCompany.DAL.UnitOfWork
         {
             get
             {
-                if (_productsRepository == null)
+                if (_suppToProdRepository == null)
                 {
                     _suppToProdRepository = DependencyInjectorDAL.
                         Resolve<ISuppToProdRepository>();

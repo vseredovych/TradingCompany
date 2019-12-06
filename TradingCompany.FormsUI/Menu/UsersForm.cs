@@ -67,15 +67,14 @@ namespace TradingCompany.FormsUI.Menu
         {
             RestoreDataGrid();
         }
+        private void Button_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void Datagrid_recent_orders_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
-
-        private void Button_exit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

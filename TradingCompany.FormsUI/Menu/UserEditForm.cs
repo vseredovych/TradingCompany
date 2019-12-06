@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TradingCompany.BLL.DTO;
-using TradingCompany.DAL.Models.Entities.Implementations;
 using TradingCompany.BLL.Models;
 using TradingCompany.BLL.Services.Abstractions;
 
@@ -48,7 +40,7 @@ namespace TradingCompany.FormsUI.Menu
                 user.Role = combobox_role.SelectedItem.ToString();
                 user.HashPassword = _user.HashPassword;
                 user.Id = _user.Id;
-                if (_userService.UpdateUser(user))
+                if (_userService.Update(user))
                 {
                     MessageBox.Show(
                         "User was updated!",
@@ -80,56 +72,6 @@ namespace TradingCompany.FormsUI.Menu
         private void Button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void Combobox_role_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Textbox_surname_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Textbox_email_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Textbox_name_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label_role_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label_email_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label_surname_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label_name_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button_apply_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button_cancel_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

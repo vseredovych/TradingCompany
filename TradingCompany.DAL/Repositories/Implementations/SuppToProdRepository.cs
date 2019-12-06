@@ -10,7 +10,7 @@ namespace TradingCompany.DAL.Repositories.Implementations
 {
     public class SuppToProdRepository: BasicRepository<SupplierToProduct, SupplierToProductFilter>, ISuppToProdRepository
     {
-        internal static readonly string tableName = "tblSuppliers";
+        internal static readonly string tableName = "tblSuppliersToProducts";
 
         public SuppToProdRepository() : base(tableName) { }
 
@@ -24,7 +24,7 @@ namespace TradingCompany.DAL.Repositories.Implementations
             try
             {
                 SupplierToProduct entity = new SupplierToProduct();
-                //entity.Id = Convert.ToUInt64(reader["Id"]);
+                entity.Id = Convert.ToUInt64(reader["Id"]);
                 entity.ProductId = Convert.ToUInt64(reader["ProductId"]);
                 entity.SupplierId = Convert.ToUInt64(reader["SupplierId"]);
                 return entity;
