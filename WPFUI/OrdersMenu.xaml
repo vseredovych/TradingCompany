@@ -17,36 +17,31 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <DataGrid x:Name="users_dtgrd" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Users}"
+            <DataGrid x:Name="orders_dtgrd" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Orders}"
                       SelectedItem="{Binding SelectedOrder}" AutoGenerateColumns="False"
-                      SelectionChanged="users_dtgrd_SelectionChanged">
+                      SelectionChanged="orders_dtgrd_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="User" Width="Auto" Binding="{Binding Path=User}"/>
+                    <DataGridTextColumn Header="User Name" Width="Auto" Binding="{Binding Path=User}"/>
                     <DataGridTextColumn Header="Destination" Width="Auto" Binding="{Binding Path=Destination}"/>
-                    <DataGridTextColumn Header="OrderDate" Width="*" Binding="{Binding Path=OrderDate}"/>
+                    <DataGridTextColumn Header="Order Date" Width="*" Binding="{Binding Path=OrderDate}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Order" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="24,25,0,0" VerticalAlignment="Top" FontSize="18"/>
-            <Label Content="First Name" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="24,90,0,0" VerticalAlignment="Top"/>
-            <Label Content="Last Name" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="24,140,0,0" VerticalAlignment="Top"/>
-            <Label Content="Email" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="24,190,0,0" VerticalAlignment="Top"/>
-            <Label Content="Login" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="24,240,0,0" VerticalAlignment="Top"/>
-            <Label Content="Role" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="24,290,0,0" VerticalAlignment="Top"/>
-            <StackPanel Grid.Column="1" Grid.RowSpan="2" DataContext="{Binding SelectedUser}" Margin="190,90,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="184">
-                <TextBox x:Name="fname_txtbx" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="lname_txtbx" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="0,40,0,0"/>
-                <TextBox x:Name="email_txtbx" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="0,30,0,0" IsReadOnly="True"/>
-                <TextBox x:Name="login_txtbx" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Width="120" Margin="0,35,0,0" IsReadOnly="True"/>
+            <Label Content="Order info" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="24,25,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <Label Content="Destination" Grid.Column="1" HorizontalAlignment="Left" Margin="24.2,88,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+            <Label Content="OrderDate" Grid.Column="1" HorizontalAlignment="Left" Margin="24.2,136,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+            <Label Content="User" Grid.Column="1" HorizontalAlignment="Left" Margin="24.2,192,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+            <StackPanel Grid.Column="1" Grid.RowSpan="2" DataContext="{Binding SelectedOrder}" Margin="190,90,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="184">
+                <TextBox x:Name="destination_txtbx" Text="{Binding Destination, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="0,40,0,0"/>
+                <TextBox x:Name="orderdate_txtbx" Text="{Binding OrderDate, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="0,30,0,0" IsReadOnly="True"/>
             </StackPanel>
-            <ComboBox x:Name="role_cmbbx" 
-                      ItemsSource="{Binding Roles}"
-                      SelectedItem="{Binding SelectedRole}" 
-                      DisplayMemberPath="RoleDescription"
-                      Grid.Column="1" Grid.RowSpan="2"
-                      HorizontalAlignment="Left" Margin="190,294,0,0" 
+            <ComboBox x:Name="user_cmbbx" 
+                      ItemsSource="{Binding Users}"
+                      SelectedItem="{Binding SelectedUser}" 
+                      DisplayMemberPath="User"
+                      Grid.Column="1"
+                      HorizontalAlignment="Left" Margin="190.2,192,0,0" 
                       VerticalAlignment="Top" Width="120"
-                      IsEditable="True" IsReadOnly="True">
-            </ComboBox>
+                      IsEditable="True" IsReadOnly="True" Grid.Row="1"/>
 
             <Button Content="Cancel" Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="271,394,0,0" VerticalAlignment="Top" Width="94" Height="20" IsCancel="True" Click="Button_Click"/>
             <Button x:Name="save_btn" Grid.RowSpan="2" Content="Save" Grid.Column="1" HorizontalAlignment="Left" Margin="41,394,0,0" VerticalAlignment="Top" Width="94" Height="20" Click="save_btn_Click"/>

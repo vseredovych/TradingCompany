@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TradingCompany.BLL.DTO;
+using TradingCompany.BLL.Models;
 using TradingCompany.BLL.Services.Abstractions;
 
 namespace WPFUI
@@ -19,7 +20,6 @@ namespace WPFUI
     /// <summary>
     /// Логика взаимодействия для OrdersMenu.xaml
     /// </summary>
-    /// 
     public partial class OrdersMenu : Window
     {
         OrderListViewModel _viewModel;
@@ -30,70 +30,76 @@ namespace WPFUI
             _orderService = orderService;
             DataContext = _viewModel;
 
-
             InitializeComponent();
-
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(users_dtgrd.ItemsSource);
-            //view.Filter = UserFilter;
-        }
-        private void users_dtgrd_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            role_cmbbx.Text = _viewModel.SelectedOrder.Id.ToString();
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(orders_dtgrd.ItemsSource);
+            view.Filter = OrderFilter;
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private bool OrderFilter(object obj)
         {
-            //if (users_dtgrd.SelectedItems.Count > 0)
-            //{
-            //    UserDTO user = new UserDTO();
-            //    var dialog = MessageBox.Show("Are you sure?", "Update", MessageBoxButton.YesNo);
-
-            //    if (dialog == MessageBoxResult.Yes)
-            //    {
-            //        user = _viewModel.SelectedUser;
-            //        user.FirstName = fname_txtbx.Text;
-            //        user.LastName = lname_txtbx.Text;
-            //        user.Role = _viewModel.SelectedRole.RoleId;
-            //        _userService.Update(user);
-            //    }
-            //    users_dtgrd.Items.Refresh();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Choose user");
-            //}
+            if (String.IsNullOrEmpty(filter_txtbx.Text))
+                return true;
+            else
+                return ((obj as OrderViewModel).User.IndexOf(filter_txtbx.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
-        private void delete_btn_Click(object sender, RoutedEventArgs e)
+        private void orders_dtgrd_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (users_dtgrd.SelectedItems.Count > 0)
-            //{
-            //    var user = _viewModel.SelectedUser;
-            //    var dialog = MessageBox.Show("Are you sure?", "Delete", MessageBoxButton.YesNo);
-
-            //    if (dialog == MessageBoxResult.Yes)
-            //    {
-            //        _userService.Remove(user);
-            //    }
-            //    _viewModel.Users.Remove(user);
-            //    users_dtgrd.Items.Refresh();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Choose user");
-            //}
-        }
-
-
-        private void filter_txtbx_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(users_dtgrd.ItemsSource).Refresh();
+            //user_cmbbx.Text = _viewModel.SelectedOrder;
         }
 
         private void save_btn_Click(object sender, RoutedEventArgs e)
         {
+            if (orders_dtgrd.SelectedItems.Count > 0)
+            {
+                OrderViewModel order = new OrderViewModel();
+                var dialog = MessageBox.Show("Are you sure?", "Update", MessageBoxButton.YesNo);
 
+                if (dialog == MessageBoxResult.Yes)
+                {
+                    order = _viewModel.SelectedOrder;
+                    order.Destination = destination_txtbx.Text;
+                    //order.OrderDate = DateTime.ParseExact(orderdate_txtbx.Text, "dd-MM-yyyy hh:mm:ss:tt",
+                    //                       CultureInfo.InvariantCulture);
+                    order.User = _viewModel.SelectedOrder.User;
+                    _orderService.Update(order);
+                }
+                orders_dtgrd.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Choose order");
+            }
+        }
+
+        private void delete_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (orders_dtgrd.SelectedItems.Count > 0)
+            {
+                var order = _viewModel.SelectedOrder;
+                var dialog = MessageBox.Show("Are you sure?", "Delete", MessageBoxButton.YesNo);
+
+                if (dialog == MessageBoxResult.Yes)
+                {
+                    _orderService.Delete(order.Id);
+                }
+                _viewModel.Orders.Remove(order);
+                orders_dtgrd.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Choose order");
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void filter_txtbx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(orders_dtgrd.ItemsSource).Refresh();
         }
     }
 }

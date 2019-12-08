@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
 using TradingCompany.BLL.DTO;
+using TradingCompany.BLL.Models;
 using TradingCompany.BLL.Services.Abstractions;
 
 namespace WPFUI
@@ -11,11 +16,17 @@ namespace WPFUI
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private readonly IOrderService _orderService;
-        public ObservableCollection<OrderDTO> Orders { get; set; }
+        private readonly IUserService _userService;
 
-        private OrderDTO _selectedOrder;
 
-        public OrderDTO SelectedOrder
+        public ObservableCollection<OrderViewModel> Orders { get; set; }
+        public ObservableCollection<UserViewModel> Users { get; set; }
+
+
+        private OrderViewModel _selectedOrder;
+        private OrderViewModel _selectedUser;
+
+        public OrderViewModel SelectedOrder
         {
             get { return _selectedOrder; }
             set
@@ -25,12 +36,31 @@ namespace WPFUI
             }
         }
 
-        public OrderListViewModel(IOrderService OrderService)
+        public OrderViewModel SelectedUser
         {
-            _orderService = OrderService;
-            Update();
+            get { return _selectedUser; }
+            set
+            {
+                _selectedUser = value;
+                OnPropertyChanged("SelectedUser");
+            }
         }
 
+        public OrderListViewModel(IOrderService orderService, IRoleService roleService, IUserService userService)
+        {
+            _orderService = orderService;
+            _userService = userService;
+            Update();
+        }
+        public string User
+        {
+            get { return _selectedOrder.User; }
+            set
+            {
+                _selectedOrder.User = value;
+                OnPropertyChanged("User");
+            }
+        }
         public string Destination
         {
             get { return _selectedOrder.Destination; }
@@ -40,16 +70,25 @@ namespace WPFUI
                 OnPropertyChanged("Destination");
             }
         }
-        //public DateTime OrderDate
-        //{
-        //  get { return _selectedOrder.OrderDate; }
-        //    set
-        //    {
-        //        _selectedOrder.OrderDate = value;
-        //        OnPropertyChanged("Email");
-         //   }
-        //}
+        public string OrderDate
+        {
+            get { return _selectedOrder.OrderDate.ToString(); }
+            set
+            {
+                _selectedOrder.OrderDate = Convert.ToDateTime(value);
+                OnPropertyChanged("OrderDate");
+            }
+        }
 
+        public string UsersDescription
+        {
+            get { return _userService.GetByEmail(_selectedUser.User).Email; }
+            set
+            {
+                _selectedUser.User = value;
+                OnPropertyChanged("UsersDescription");
+            }
+        }
 
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
@@ -59,7 +98,9 @@ namespace WPFUI
 
         public void Update()
         {
-            Orders = new ObservableCollection<OrderDTO>(_orderService.GetAll());
+            Orders = new ObservableCollection<OrderViewModel>(_orderService.GetViewModels());
+            Users = new ObservableCollection<UserViewModel>(_userService.GetViewModels());
+
         }
     }
 }
