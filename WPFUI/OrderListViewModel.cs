@@ -20,23 +20,31 @@ namespace WPFUI
 
 
         public ObservableCollection<OrderViewModel> Orders { get; set; }
-        public ObservableCollection<UserViewModel> Users { get; set; }
+        public ObservableCollection<UserDTO> Users { get; set; }
 
 
         private OrderViewModel _selectedOrder;
-        private OrderViewModel _selectedUser;
+        private UserDTO _selectedUser;
 
         public OrderViewModel SelectedOrder
         {
             get { return _selectedOrder; }
             set
             {
-                _selectedOrder = value;
-                OnPropertyChanged("SelectedOrder");
+                try
+                {
+                    _selectedOrder = value;
+                    _selectedUser = _userService.GetByEmail(_selectedOrder.User);
+                    OnPropertyChanged("SelectedOrder");
+                }
+                catch
+                {
+
+                }
             }
         }
 
-        public OrderViewModel SelectedUser
+        public UserDTO SelectedUser
         {
             get { return _selectedUser; }
             set
@@ -80,13 +88,13 @@ namespace WPFUI
             }
         }
 
-        public string UsersDescription
+        public UserDTO UserDescription
         {
-            get { return _userService.GetByEmail(_selectedUser.User).Email; }
+            get { return _userService.GetByEmail(_selectedOrder.User); }
             set
             {
-                _selectedUser.User = value;
-                OnPropertyChanged("UsersDescription");
+                _selectedUser = value;
+                OnPropertyChanged("UserDescription");
             }
         }
 
@@ -99,7 +107,7 @@ namespace WPFUI
         public void Update()
         {
             Orders = new ObservableCollection<OrderViewModel>(_orderService.GetViewModels());
-            Users = new ObservableCollection<UserViewModel>(_userService.GetViewModels());
+            Users = new ObservableCollection<UserDTO>(_userService.GetAll());
 
         }
     }

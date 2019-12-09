@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TradingCompany.BLL;
 using TradingCompany.BLL.Models;
 using TradingCompany.BLL.Services.Abstractions;
 
@@ -45,7 +46,7 @@ namespace WPFUI
 
         private void orders_dtgrd_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //user_cmbbx.Text = _viewModel.SelectedOrder;
+            user_cmbbx.Text = _viewModel.SelectedOrder.User;
         }
 
         private void save_btn_Click(object sender, RoutedEventArgs e)
@@ -59,9 +60,9 @@ namespace WPFUI
                 {
                     order = _viewModel.SelectedOrder;
                     order.Destination = destination_txtbx.Text;
-                    //order.OrderDate = DateTime.ParseExact(orderdate_txtbx.Text, "dd-MM-yyyy hh:mm:ss:tt",
-                    //                       CultureInfo.InvariantCulture);
-                    order.User = _viewModel.SelectedOrder.User;
+                    order.OrderDate = _viewModel.SelectedOrder.OrderDate;
+
+                    order.User = _viewModel.SelectedUser.Email;
                     _orderService.Update(order);
                 }
                 orders_dtgrd.Items.Refresh();
@@ -83,8 +84,15 @@ namespace WPFUI
                 {
                     _orderService.Delete(order.Id);
                 }
-                _viewModel.Orders.Remove(order);
-                orders_dtgrd.Items.Refresh();
+                try
+                {
+                    _viewModel.Orders.Remove(order);
+                    orders_dtgrd.Items.Refresh();
+                }
+                catch
+                {
+
+                }
             }
             else
             {
@@ -100,6 +108,12 @@ namespace WPFUI
         private void filter_txtbx_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(orders_dtgrd.ItemsSource).Refresh();
+        }
+
+        private void Create_btn_Click(object sender, RoutedEventArgs e)
+        {
+            CreateOrderWindow createWindow = DependencyInjectorBLL.Resolve<CreateOrderWindow>();
+            createWindow.Show();
         }
     }
 }

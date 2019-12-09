@@ -15,7 +15,7 @@ namespace TradingCompany.DAL.Models.Filters.Implementations
 
         public string Destination { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
 
         public override string ToString()
         {

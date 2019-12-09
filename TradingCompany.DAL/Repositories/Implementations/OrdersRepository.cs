@@ -58,9 +58,9 @@ namespace TradingCompany.DAL.Repositories.Implementations
                 {
                     parameters.Add(dbManager.CreateParameter(prefix + "Destination", 50, filter.Destination, DbType.String));
                 }
-                if (filter.OrderDate != null && filter.OrderDate.ToString() != "1/1/0001 12:00:00 AM")
+                if (filter.OrderDate != null && filter.OrderDate.ToString() != "1/1/0001 12:00:00 AM" && filter.OrderDate.ToString() != "01.01.0001 0:00:00")
                 {
-                    parameters.Add(dbManager.CreateParameter(prefix + "OrderDate", 50, filter.OrderDate, DbType.DateTime));
+                    parameters.Add(dbManager.CreateParameter(prefix + "OrderDate", 50, filter.OrderDate, DbType.Date));
                 }
                 return parameters;
             }

@@ -61,6 +61,19 @@ namespace TradingCompany.BLL.Services.Implementations
             }
             return true;
         }
+        public bool Create(OrderDTO model)
+        {
+            try
+            {
+                Order order = _mapper.Map<OrderDTO, Order>(model);
+                _unitOfWork.OrdersRepository.Create(order);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
         public bool Update(OrderViewModel model)
         {
             try

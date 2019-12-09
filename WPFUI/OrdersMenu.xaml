@@ -37,7 +37,7 @@
             <ComboBox x:Name="user_cmbbx" 
                       ItemsSource="{Binding Users}"
                       SelectedItem="{Binding SelectedUser}" 
-                      DisplayMemberPath="User"
+                      DisplayMemberPath="Email" 
                       Grid.Column="1"
                       HorizontalAlignment="Left" Margin="190.2,192,0,0" 
                       VerticalAlignment="Top" Width="120"
@@ -53,7 +53,9 @@
                      Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Center" Width="120"
-                     Margin="15,0,0,0" TextChanged="filter_txtbx_TextChanged"/>
+                     Margin="84,12,0,10" TextChanged="filter_txtbx_TextChanged"/>
+            <Button x:Name="create_btn" Content="Create" HorizontalAlignment="Left" Margin="302,10,0,0" VerticalAlignment="Top" Width="94" Height="20" Click="Create_btn_Click"/>
+            <Label Content="Search" HorizontalAlignment="Left" Margin="38,5,0,0" VerticalAlignment="Top"/>
 
         </Grid>
     </Grid>
